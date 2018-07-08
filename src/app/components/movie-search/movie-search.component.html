@@ -1,0 +1,8 @@
+<div class="autocomplete">
+    <input id='searchBoxId' [formControl]="term" placeholder='Type here to search movie' (blur)='endOfSearching()' />
+    <div id="myInputautocomplete-list" class="autocomplete-items">
+        <div *ngFor='let searchResult of searchResults'>
+            {{searchResult.title}} ({{searchResult.release_date|date:'yyyy'}})
+        </div>
+    </div>
+</div>
