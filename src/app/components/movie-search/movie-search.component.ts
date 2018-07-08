@@ -39,8 +39,8 @@ private searchMovies(query: string) {
 }}
 
 endOfSearching() {
-  // this.searchResults = [];
-  // this.searchValue = '';
+  this.searchResults = [];
+  this.searchValue = '';
 }
 
 }
