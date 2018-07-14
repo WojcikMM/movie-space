@@ -6,7 +6,7 @@
                                 <h3>{{movieItem.title}}</h3>
                                 <p>{{movieItem.release_date|date}}</p>
                                 <p>{{movieItem.overview|movieDescription}}</p>
-                                <a>Details</a>
+                                <a routerLink="/details/{{movieItem.id}}">Details</a>
                         </div>
                 </div>
         </div>

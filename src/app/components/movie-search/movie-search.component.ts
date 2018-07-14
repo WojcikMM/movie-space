@@ -29,6 +29,7 @@ private searchMovies(query: string) {
   if ( !query ) {
     this.searchResults = [];
   } else {
+
     this._movieSearchService
     .searchForMovies(query, this._searchResultsPage)
     .subscribe(result => {
@@ -38,7 +39,6 @@ private searchMovies(query: string) {
 
 endOfSearching() {
   this.term.reset();
-  this.searchResults = [];
 }
 
 }

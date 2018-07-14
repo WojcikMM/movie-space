@@ -1,11 +1,11 @@
-<table>
+<table *ngIf="movieDetals else loading">
   <tr>
     <td>
-      <img src="https://image.tmdb.org/t/p/w300//rv1AWImgx386ULjcf62VYaW8zSt.jpg" alt="Movie Poster">
+      <img  [src]="poster_url_prefix + movieDetals.poster_path" alt="Movie Poster">
     </td>
     <td style="vertical-align: baseline;">
       <h2>
-        <strong>Tytuł Filmu</strong>(2012)
+        <strong>{{movieDetals.title}}</strong>({{movieDetals.release_date|date:'yyyy'}})
       </h2>
       <table>
         <tr>
@@ -26,10 +26,14 @@
           </td>
         </tr>
       </table>
-      <h4>Opis:</h4>
+      <h4>Overview</h4>
       <p style="width:60%">
-          Thomas Anderson wiedzie podwójne życie - na co dzień pracuje w koncernie Meta Cortechs jako programista, prywatnie jest genialnym hackerem, działającym pod nickiem Neo. Pewnego dnia nawiązuje z nim kontakt tajemniczy Morfeusz - człowiek, który obiecuje mu odkryć prawdę o rzeczywistości, w jakiej żyją. Prawdę o Matriksie. Prawdę o dwóch światach: prawdziwym i wygenerowanym, który ma tylko "udawać" rzeczywistość. Neo początkowo wbrew sobie przystaje do grupy kierowanej przez Morfeusza, stopniowo jednak sam zaczyna dostrzegać, że ze światem, w którym żył dotychczas, jest coś nie tak. Że jego życiem cały czas ktoś kierował. Kolejne stopnie wtajemniczenia stawiają przed Neo nowe pytania. Który ze światów jest prawdziwy? Czym jest Matrix i komu służy? I jaką rolę w planie Morfeusza ma do spełnienia on sam?
+      {{movieDetals.overview}}    
       </p>
     </td>
   </tr>
 </table>
+
+<ng-template #loading>
+  <div>Loading ...</div>
+</ng-template>
