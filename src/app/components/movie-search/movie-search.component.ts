@@ -15,8 +15,6 @@ export class MovieSearchComponent {
   private _searchResultsPage = 1;
   private _maxSearchResultsCount = 5;
   private _debounceTimeout = 400;
-
-  searchValue: string;
   searchResults: Array<Movie>;
   term = new FormControl();
 
@@ -39,8 +37,8 @@ private searchMovies(query: string) {
 }}
 
 endOfSearching() {
+  this.term.reset();
   this.searchResults = [];
-  this.searchValue = '';
 }
 
 }

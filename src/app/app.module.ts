@@ -8,6 +8,9 @@ import { HomeComponent } from './components/home/home.component';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { MovieDescriptionPipe } from './pipes/movie-description.pipe';
 import { MovieSearchComponent } from './components/movie-search/movie-search.component';
+import { AppRoutingModule } from './app-routing.module';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
@@ -15,13 +18,16 @@ import { MovieSearchComponent } from './components/movie-search/movie-search.com
     HomeComponent,
     MovieCardComponent,
     MovieDescriptionPipe,
-    MovieSearchComponent
+    MovieSearchComponent,
+    NotFoundComponent,
+    MovieDetailsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

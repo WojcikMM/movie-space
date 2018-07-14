@@ -25,6 +25,6 @@ export class MovieDiscoverService {
     const transformedDate = new Date();
     const pattern = /\./gi;
     transformedDate.setMonth( transformedDate.getMonth() + monthsLength);
-    return `${transformedDate.getFullYear()}-${transformedDate.getMonth()}-${transformedDate.getDay()}`;
+    return transformedDate.toISOString().substring(0, 10);
   }
 }
