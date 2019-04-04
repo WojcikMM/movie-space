@@ -17,7 +17,7 @@ export class MovieCardComponent implements OnInit {
   constructor(private _sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.score = 100 - (this.movie.vote_average * 10);
+    this.score = this.movie.vote_average * 10;
     console.log('On init: ' + this.movie);
   }
   getPosterUrl() {

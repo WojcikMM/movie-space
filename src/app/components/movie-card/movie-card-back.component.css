@@ -36,6 +36,9 @@
 
 .flip-container:hover .flipper {
     transform: rotateY(180deg);
+    --icons-spacing-rating: 0.3em;
+    --icons-active-color: yellow;
+    --icons-inactive-color: grey;
 }
 
 .flip-container .all-popcorns span {
@@ -46,6 +49,36 @@
     animation: icons-show-animation 2s linear forwards;
 }
 
+.rating-box-container{
+    position: absolute;
+    bottom: 2em;
+    width: 100%;
+}
+
+.rating-box {
+    position: relative;
+    font-size: 3em;
+    font-family: FontAwesome;
+    display: inline-block;
+    color: var(--icons-inactive-color);
+}
+
+.rating-box .rating {
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    color: var(--icons-active-color);
+}
+
+.rating-box .rating:before, .rating-box:before {
+    content: "\f008 \f008 \f008 \f008 \f008";
+    display: block;
+    letter-spacing: var(--icons-spacing-rating);
+    /* width: 10em; */
+    text-align: center;
+    margin-right: calc(-1 * var(--icons-spacing-rating));
+}
 
 /* .flip-container:hover .all-popcorns span:nth-child(1){
     animation-delay: 3s;  
@@ -64,46 +97,14 @@
 } */
 
 @keyframes icons-show-animation {
-    from 
-    {
+    from {
         opacity: 0;
         transform: rotateY(90deg);
     }
-    to 
-    {
+    to {
         opacity: 1;
         transform: rotatey(0deg)
     }
-}
-
-.score-icons {
-    position: absolute;
-    bottom: 1em;
-    right: 0;
-    left: 0;
-    border: var(--score-icons-border-size) solid var(--progress-bar-step-color);
-    border-radius: 2vw;
-    background-image: linear-gradient(45deg, var(--progress-bar-step-color) 10%, transparent 20%, var(--progress-bar-step-color) 30%, transparent 40%, var(--progress-bar-step-color) 60%, transparent 70%, var(--progress-bar-step-color) 90%);
-}
-
-.wall-popcorns {
-    position: absolute;
-    height: 100%;
-    top: 0;
-    right: 0;
-    content: attr(title);
-    z-index: 1;
-    background-image: linear-gradient(45deg, var(--progress-bar-step-color) 5%, var(--back-default-background-color) 15%, var(--progress-bar-step-color) 35%, var(--back-default-background-color) 45%, var(--progress-bar-step-color) 65%, var(--back-default-background-color) 75%, var(--progress-bar-step-color) 95%);
-    border: var(--score-icons-border-size) var(--score-icons-border-size) var(--score-icons-border-size);
-    border-radius: 1.5vh 1vw 1vw 1.5vh;
-}
-
-.all-popcorns {
-    text-align: justify;
-    display: flex;
-    justify-content: space-between;
-    font-size: 3em;
-    padding: 0.5vw;
 }
 
 .details-button {

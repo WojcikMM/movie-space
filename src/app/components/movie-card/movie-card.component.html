@@ -1,27 +1,25 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
 <div class='flip-container'>
   <div class='flipper'>
     <img [src]="getPosterUrl()" [alt]="movie.title" class="front" />
     <div class="back">
       <h2>{{movie.title}}</h2>
-        <div class="movie-info-grid">
-          <label>Release:</label>
-          <div class="release-grid">{{movie.release_date|date}}</div>
-          <label>Votes:</label>
-          <div>{{movie.vote_count}}</div>
-          <label>Genres:</label>
-          <div class="genre-types"><button *ngFor="let genreId of movie.genre_ids">{{genreId}}</button></div>
-          <span>{{movie.vote_average}}</span>
-        </div>
+      <div class="movie-info-grid">
+        <label>Release:</label>
+        <div class="release-grid">{{movie.release_date|date}}</div>
+        <label>Votes:</label>
+        <div>{{movie.vote_count}}</div>
+        <label>Genres:</label>
+        <div class="genre-types"><button *ngFor="let genreId of movie.genre_ids">{{genreId}}</button></div>
+        <span>{{movie.vote_average}}</span>
+      </div>
       <p>{{movie.overview}}</p>
       <button routerLink="/details/{{movie.id}}" class="details-button">Details</button>
-      <div class="score-icons">
-        <div class="all-popcorns">
-          <span *ngFor="let camera of [0,0,0,0,0]">🎥</span>
+      <div class="rating-box-container">
+        <div class="rating-box">
+          <div class="rating" [style.width.%]="score"></div>
         </div>
-        <div [style.width.%]="score"  class="wall-popcorns"></div>
       </div>
     </div>
   </div>
 </div>
-
-<!-- [ngStyle]="{'width': score + 'px'}" -->
