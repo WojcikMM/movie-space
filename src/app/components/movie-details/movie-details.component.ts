@@ -14,10 +14,10 @@ export class MovieDetailsComponent {
 
   constructor(private _movieDetailService: MovieDetailsService, private route: ActivatedRoute) {
     const movieId = +this.route.snapshot.paramMap.get('id');
-    this.GetMovieDetails(movieId);
+    this._movieDetailService.getMovieDetails(movieId).subscribe(result => {
+      this.movieDetals = result;
+    });
    }
 
-  private GetMovieDetails(movieId: number) {
-    this._movieDetailService.getMovieDetails(movieId).subscribe(result => { this.movieDetals = result; });
-  }
+
 }

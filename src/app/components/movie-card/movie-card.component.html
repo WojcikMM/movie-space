@@ -1,13 +1,27 @@
-<div class="movie-items-container">
-        <div *ngFor="let movieItem of movies" class='flip-container'>
-                <div class='flipper'>
-                        <img [src]="poster_url_prefix + movieItem.poster_path" [alt]="movieItem.title" class="front" />
-                        <div class="back">
-                                <h3>{{movieItem.title}}</h3>
-                                <p>{{movieItem.release_date|date}}</p>
-                                <p>{{movieItem.overview|movieDescription}}</p>
-                                <a routerLink="/details/{{movieItem.id}}">Details</a>
-                        </div>
-                </div>
+<div class='flip-container'>
+  <div class='flipper'>
+    <img [src]="getPosterUrl()" [alt]="movie.title" class="front" />
+    <div class="back">
+      <h2>{{movie.title}}</h2>
+        <div class="movie-info-grid">
+          <label>Release:</label>
+          <div class="release-grid">{{movie.release_date|date}}</div>
+          <label>Votes:</label>
+          <div>{{movie.vote_count}}</div>
+          <label>Genres:</label>
+          <div class="genre-types"><button *ngFor="let genreId of movie.genre_ids">{{genreId}}</button></div>
+          <span>{{movie.vote_average}}</span>
         </div>
+      <p>{{movie.overview}}</p>
+      <button routerLink="/details/{{movie.id}}" class="details-button">Details</button>
+      <div class="score-icons">
+        <div class="all-popcorns">
+          <span *ngFor="let camera of [0,0,0,0,0]">🎥</span>
+        </div>
+        <div [style.width.%]="score"  class="wall-popcorns"></div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- [ngStyle]="{'width': score + 'px'}" -->

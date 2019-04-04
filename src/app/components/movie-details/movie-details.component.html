@@ -9,26 +9,19 @@
       </h2>
       <table>
         <tr>
-          <td>Ocena:</td>
-          <td>1/4</td>
+          <td>Average score:</td>
+          <td>{{movieDetals.vote_average}}({{movieDetals.vote_count}})</td>
         </tr>
         <tr>
-          <td>Ilość głosow:</td>
-          <td>2334</td>
-        </tr>
-        <tr>
-          <td>Kategorie</td>
+          <td>Categories:</td>
           <td>
-            <button>Kategoria1</button>
-            <button>Kategoria2</button>
-            <button>Kategoria3</button>
-            <button>Kategoria4</button>
+              <button *ngFor="let genre of movieDetals.genres" routerLink="/category/{{genre.id}}" >{{genre.name}}</button>
           </td>
         </tr>
       </table>
       <h4>Overview</h4>
       <p style="width:60%">
-      {{movieDetals.overview}}    
+      {{movieDetals.overview}}
       </p>
     </td>
   </tr>
