@@ -1,27 +1,20 @@
+/* entire container, keeps perspective */
 .flip-container {
     perspective: 1000px;
+ 
+}
+
+/* flip the pane when hovered */
+
+.flip-container:hover .flipper {
+    transform: rotateY(180deg);
 }
 
 .flipper {
     transition: 0.9s;
     transform-style: preserve-3d;
+   
 }
-
-.back {
-    --back-default-background-color: #598392;
-    --score-icons-border-size: 0.25em;
-    --progress-bar-step-color: #28464B;
-    transform: rotateY(180deg);
-    text-align: center;
-    font-style: oblique;
-    background-color: var(--back-default-background-color);
-    vertical-align: middle;
-    position: absolute;
-    content: attr(data-value);
-}
-
-/* hide back of pane during swap */
-
 .front, .back {
     backface-visibility: hidden;
     top: 0;
@@ -30,23 +23,33 @@
     height: 64vh;
 }
 
-/* entire container, keeps perspective */
-
-/* flip the pane when hovered */
-
-.flip-container:hover .flipper {
-    transform: rotateY(180deg);
+.back {
+    --theme-background-color: #598392;
+    --theme-3-color: #FFB86F;
+    --theme-inactive-color: #D8CFAF;
+    --theme-black-color: #404040;
+    --theme-rating-active-color: #F4442E;
     --icons-spacing-rating: 0.3em;
-    --icons-active-color: yellow;
-    --icons-inactive-color: grey;
+
+    transform: rotateY(180deg);
+    text-align: center;
+    font-style: oblique;
+    background-color: var(--theme-background-color);
+    vertical-align: middle;
+    position: absolute;
+    content: attr(data-value);
 }
 
-.flip-container .all-popcorns span {
+.rating::before {
+    width: 0;
     opacity: 0;
+    transition: all 3s ease-out;
+    overflow: hidden;
 }
 
-.flip-container:hover .all-popcorns span {
-    animation: icons-show-animation 2s linear forwards;
+.flip-container:hover .rating::before {
+    opacity:1;
+    width: 100%;
 }
 
 .rating-box-container{
@@ -60,7 +63,7 @@
     font-size: 3em;
     font-family: FontAwesome;
     display: inline-block;
-    color: var(--icons-inactive-color);
+    color: var(--theme-inactive-color);
 }
 
 .rating-box .rating {
@@ -68,7 +71,7 @@
     left: 0;
     top: 0;
     overflow: hidden;
-    color: var(--icons-active-color);
+    color: var(--theme-rating-active-color);
 }
 
 .rating-box .rating:before, .rating-box:before {
@@ -78,33 +81,6 @@
     /* width: 10em; */
     text-align: center;
     margin-right: calc(-1 * var(--icons-spacing-rating));
-}
-
-/* .flip-container:hover .all-popcorns span:nth-child(1){
-    animation-delay: 3s;  
-}
-.flip-container:hover .all-popcorns span:nth-child(2){
-    animation-delay: 5s;
-}
-.flip-container:hover .all-popcorns span:nth-child(3){
-    animation-delay: 7s;
-}
-.flip-container:hover .all-popcorns span:nth-child(4){
-    animation-delay: 9s;
-}
-.flip-container:hover .all-popcorns span:nth-child(5){
-    animation-delay: 12s;
-} */
-
-@keyframes icons-show-animation {
-    from {
-        opacity: 0;
-        transform: rotateY(90deg);
-    }
-    to {
-        opacity: 1;
-        transform: rotatey(0deg)
-    }
 }
 
 .details-button {
@@ -118,15 +94,14 @@
     transition: all 0.4s linear 0s;
     box-sizing: content-box;
     border-radius: 2.5vw 0;
-    box-shadow: -3px 3px #404040;
-    background-color: #FFB86F;
+    box-shadow: -3px 3px var(--theme-black-color);
+    background-color: var(--theme-inactive-color);
 }
 
 .details-button:hover {
     top: 3px;
     left: -3px;
-    box-shadow: -3px 3px 0 #404040;
-    background-color: #BA5C12;
+    background-color: var(--theme-3-color);
 }
 
 .movie-info-grid {
@@ -146,13 +121,13 @@
 }
 
 .movie-info-grid .genre-types button {
-    box-shadow: -4px 4px 0 #404040;
-    background-color: #AA968A;
+    box-shadow: -4px 4px 0 var(--theme-black-color);
+    background-color: var(--theme-3-color);
     margin: 0.2em;
     border-radius: 0.5em;
 }
 
-.release-date {
+.release-grid {
     font-size: 1.2em;
     text-align: center;
 }
