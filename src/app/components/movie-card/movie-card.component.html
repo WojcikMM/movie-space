@@ -10,15 +10,16 @@
         <label>Votes:</label>
         <div>{{movie.vote_count}}</div>
         <label>Genres:</label>
-        <div class="genre-types"><button *ngFor="let genreId of movie.genre_ids">{{genreId}}</button></div>
+        <div class="genre-types"><button *ngFor="let genre of movie.genre_list" routerLink="/{{genre.id}}" >{{genre.name}}</button></div>
         <span>{{movie.vote_average}}</span>
       </div>
       <p>{{movie.overview}}</p>
-      <button routerLink="/details/{{movie.id}}" class="details-button">Details</button>
+    
       <div class="rating-box-container">
         <div class="rating-box">
           <div class="rating" [style.width.%]="score"></div>
         </div>
+        <button routerLink="/details/{{movie.id}}" class="details-button">Details</button>
       </div>
     </div>
   </div>

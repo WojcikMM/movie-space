@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 })
 export class MovieDetailsService {
 
-  constructor(private _httpClient: HttpClient) { }
+constructor(private _httpClient: HttpClient) { }
 
 getMovieDetails(movie_id: number): Observable<MovieDetailsResult> {
 

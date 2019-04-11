@@ -7,13 +7,13 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  {path: 'category/:genre-id', component: HomeComponent },
-  {path: 'details/:id', component: MovieDetailsComponent},
-  {path: '**', component: NotFoundComponent}
+  { path: ':id', component: HomeComponent, pathMatch: 'full' },
+  { path: 'details/:id', component: MovieDetailsComponent },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
-  exports: [ RouterModule ]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

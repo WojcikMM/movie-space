@@ -1,8 +1,11 @@
+import { Genre } from './genre';
+
 export interface Movie {
 
     adult: boolean;
     backdrop_path: string;
     genre_ids: Array<number>;
+    genre_list: Array<Genre>;
     id: number;
     original_language: string;
     original_title: string;

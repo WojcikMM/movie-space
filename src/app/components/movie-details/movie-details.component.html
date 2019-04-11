@@ -15,7 +15,7 @@
         <tr>
           <td>Categories:</td>
           <td>
-              <button *ngFor="let genre of movieDetals.genres" routerLink="/category/{{genre.id}}" >{{genre.name}}</button>
+              <button *ngFor="let genre of movieDetals.genres" routerLink="/{{genre.id}}" >{{genre.name}}</button>
           </td>
         </tr>
       </table>

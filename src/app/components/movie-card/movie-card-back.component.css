@@ -54,7 +54,7 @@
 
 .rating-box-container{
     position: absolute;
-    bottom: 2em;
+    bottom: 0;
     width: 100%;
 }
 
@@ -86,7 +86,7 @@
 .details-button {
     width: 65%;
     height: 8vh;
-    margin-bottom: 2vh;
+    margin: 1em;
     font-size: 2em;
     position: relative;
     top: 0;

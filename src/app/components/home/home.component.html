@@ -1,7 +1,7 @@
 <app-movie-search></app-movie-search>
 
 <div class="p-g app-movie-cards-container">
-        <div *ngFor="let movie of movies" class="ui-g-12 ui-md-6 ui-lg-4 ui-xl-3">
+        <div *ngFor="let movie of moviesList" class="ui-g-12 ui-md-6 ui-lg-4 ui-xl-3">
             <app-movie-card  [movie]="movie"></app-movie-card>
         </div>
 </div>
