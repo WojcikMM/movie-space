@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MovieDiscoverService } from '../../services/movie-discover.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +6,5 @@ import { MovieDiscoverService } from '../../services/movie-discover.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  logoUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj4xG0xzHVKjQdvDjhExHyEM8wa9oF3RBhAoKK5qcWTFrD5B0H';
   constructor() { }
 }
