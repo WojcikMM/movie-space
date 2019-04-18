@@ -1,4 +1,3 @@
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
 <div class='flip-container'>
   <div class='flipper'>
     <img [src]="getPosterUrl()" [alt]="movie.title" class="front" />
@@ -13,7 +12,7 @@
         <div class="genre-types"><button *ngFor="let genre of movie.genre_list" routerLink="/{{genre.id}}" >{{genre.name}}</button></div>
         <span>{{movie.vote_average}}</span>
       </div>
-      <p>{{movie.overview}}</p>
+      <p>{{movie.overview|movieDescription}}</p>
     
       <div class="rating-box-container">
         <div class="rating-box">

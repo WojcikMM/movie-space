@@ -1,0 +1,14 @@
+
+<div class="filters-container">
+    <div class="genre-filters">
+        <!-- Place to insert genre filters list -->
+    </div>
+    <div class="order-by-filters">
+        <button (click)="changeOrderFilter('release-date')" [disabled]="activeOrderFilterValue === 'release-date'">
+            <i class="fa fa-calendar"></i>
+        </button>
+        <button (click)="changeOrderFilter('rating-score')" [disabled]="activeOrderFilterValue === 'rating-score'">
+            <i class="fa fa-star"></i>
+        </button>
+    </div>
+</div>

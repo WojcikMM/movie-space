@@ -1,32 +1,31 @@
-<table *ngIf="movieDetals else loading">
-  <tr>
-    <td>
-      <img  [src]="poster_url_prefix + movieDetals.poster_path" alt="Movie Poster">
-    </td>
-    <td style="vertical-align: baseline;">
-      <h2>
-        <strong>{{movieDetals.title}}</strong>({{movieDetals.release_date|date:'yyyy'}})
-      </h2>
-      <table>
-        <tr>
-          <td>Average score:</td>
-          <td>{{movieDetals.vote_average}}({{movieDetals.vote_count}})</td>
-        </tr>
-        <tr>
-          <td>Categories:</td>
-          <td>
-              <button *ngFor="let genre of movieDetals.genres" routerLink="/{{genre.id}}" >{{genre.name}}</button>
-          </td>
-        </tr>
-      </table>
-      <h4>Overview</h4>
-      <p style="width:60%">
-      {{movieDetals.overview}}
-      </p>
-    </td>
-  </tr>
-</table>
+<div *ngIf="movieDetals !== undefined; else loader" class="movie-details-container">
+  <div class="main-info-grid">
+    <h2>{{movieDetals.title}}</h2>
+    <label>Release Date: </label>
+    <span>{{movieDetals.release_date}}</span>
 
-<ng-template #loading>
-  <div>Loading ...</div>
+    <label>Average Score: </label>
+    <span *ngIf="movieDetals.vote_count !== 0; else notVotedLine">{{movieDetals.vote_average}}
+      ({{movieDetals.vote_count}})</span>
+
+    <label>Runtime: </label>
+    <span>{{movieDetals.runtime}} minutes</span>
+
+    <label>Genres: </label>
+    <div class="genres-buttons">
+      <button *ngFor="let genre of movieDetals.genres">{{genre.name}}</button>
+    </div>
+
+    <h3>Overview</h3>
+    <p>{{movieDetals.overview}}</p>
+  </div>
+
+</div>
+<!-- <img [src]="poster_url_prefix + movieDetals.poster_path" alt="Movie Poster"> -->
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
+
+<ng-template #notVotedLine>
+  <span *ngIf="movieDetals.vote_count === 0">Movie not scored yet.</span>
 </ng-template>

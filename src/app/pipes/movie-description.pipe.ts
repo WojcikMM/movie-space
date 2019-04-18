@@ -5,16 +5,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class MovieDescriptionPipe implements PipeTransform {
 
-  private _maxLength = 200;
   private _noDescriptionText = 'There is no description jet.';
+  private _pattern = /(^.{1,250}\.{1})/;
 
-  transform(value: any, args?: any): any {
+  transform(value: string, args?: any): any {
     if (!value) {
       return this._noDescriptionText;
-    } else if (value.length > this._maxLength) {
-      return value.substring(0, this._maxLength) + '...';
     } else {
-      return value;
+      const result = value.match(this._pattern);
+      return !result || result.length === 0 ? this._noDescriptionText : result[0];
     }
   }
 }

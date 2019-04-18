@@ -14,7 +14,8 @@ constructor(private _httpClient: HttpClient) { }
 getMovieDetails(movie_id: number): Observable<MovieDetailsResult> {
 
   const params = new HttpParams()
-  .set('api_key', environment.movieDbKey);
+    .set('api_key', environment.movieDbKey)
+    .set('append_to_response', 'credits');
 return  this._httpClient.get<MovieDetailsResult>('https://api.themoviedb.org/3/movie/' + movie_id, {params: params});
 
 }

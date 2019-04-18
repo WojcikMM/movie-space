@@ -12,6 +12,8 @@ import { MovieSearchComponent } from './components/movie-search/movie-search.com
 import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { GenreFiltersComponent } from './components/genre-filters/genre-filters.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
     MovieDescriptionPipe,
     MovieSearchComponent,
     NotFoundComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    GenreFiltersComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
