@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MovieDetailsService } from '../../services/movie-details.service';
 import { MovieDetailsResult } from '../../models/movie-details/MovieDetailsResult';
 import { ActivatedRoute } from '../../../../node_modules/@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-movie-details',
@@ -18,6 +19,12 @@ export class MovieDetailsComponent {
       this.movieDetals = result;
     });
    }
+
+   getPosterUrl() {
+    return this.movieDetals.poster_path === null ?
+      '/assets/poster-not-found.jpg'
+      : environment.poster_url_prefix + this.movieDetals.poster_path;
+  }
 
 
 }

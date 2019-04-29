@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
-  styleUrls: ['./movie-card.component.css', './movie-card-back.component.css'],
+  styleUrls: ['./movie-card.component.css'],
 })
 export class MovieCardComponent implements OnInit {
 

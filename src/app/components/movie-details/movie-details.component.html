@@ -1,6 +1,6 @@
 <div *ngIf="movieDetals !== undefined; else loader" class="movie-details-container">
   <div class="main-info-grid">
-    <h2>{{movieDetals.title}}</h2>
+    <h1>{{movieDetals.title}}</h1>
     <label>Release Date: </label>
     <span>{{movieDetals.release_date}}</span>
 
@@ -13,11 +13,14 @@
 
     <label>Genres: </label>
     <div class="genres-buttons">
-      <button *ngFor="let genre of movieDetals.genres">{{genre.name}}</button>
+      <button  *ngFor="let genre of movieDetals.genres" routerLink="/{{genre.id}}" >{{genre.name}}</button>
     </div>
 
-    <h3>Overview</h3>
+    <h2>Overview</h2>
     <p>{{movieDetals.overview}}</p>
+    <div class="movie-poster">
+      <img [src]="getPosterUrl()" [alt]="movieDetals.title" />
+    </div>
   </div>
 
 </div>
