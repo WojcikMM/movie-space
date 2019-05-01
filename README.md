@@ -7,4 +7,5 @@ You can search movies, get many informations and vote them.
 Also you have all newest releases on main page.
 
 The one of the main objectives of the project is writing styles with Pure CSS. 
+
 ###Without using any css frameworks.
