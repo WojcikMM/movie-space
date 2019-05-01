@@ -35,6 +35,4 @@
 }
 .order-by-filters>button:disabled {
     background-color: #FFB86F;
-    cursor: not-allowed;
-    pointer-events: all;
 }
