@@ -1,13 +1,15 @@
-import { SpokenLanguage } from "./SpokenLanguage";
-import { ProductionCountry } from "./ProductionCountry";
-import { ProductionCompany } from "./ProductionCompany";
-import { Genre } from "./Genre";
+import { SpokenLanguage } from './SpokenLanguage';
+import { ProductionCountry } from './ProductionCountry';
+import { ProductionCompany } from './ProductionCompany';
+import { Genre } from './Genre';
+import { Credits } from './Credits';
 
 export interface MovieDetailsResult {
     adult: boolean;
     backdrop_path: string;
     belongs_to_collection?: any;
     budget: number;
+    credits: Credits;
     genres: Genre[];
     homepage: string;
     id: number;
