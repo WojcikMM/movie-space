@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -14,6 +14,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { GenreFiltersComponent } from './components/genre-filters/genre-filters.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { TheMovieDbInterceptor } from './interceptors/the-moviedb-interceptor';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,9 @@ import { LoaderComponent } from './components/loader/loader.component';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: TheMovieDbInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

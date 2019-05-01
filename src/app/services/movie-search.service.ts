@@ -12,7 +12,6 @@ export class MovieSearchService {
 
   searchForMovies(query: string, page= 1): Observable<MovieApiResult> {
     const params = new HttpParams()
-    .set('api_key', environment.movieDbKey)
     .set('query', query)
     .set('page', page.toString());
 

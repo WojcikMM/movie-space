@@ -18,14 +18,12 @@ export class MovieDiscoverService {
     const requestPage = '1'; // future pageing
 
     let params = new HttpParams()
-      .set('api_key', environment.movieDbKey)
       .set('primary_release_date.gte', this.addMonths(-1))
       .set('primary_release_date.lte', this.addMonths(1))
       .set('page', requestPage);
     if (!isNaN(genreId)) {
       params = params.set('with_genres', genreId.toString());
     }
-
     return this._httpClient.get<MovieApiResult>(`${environment.movieDbUrl}/discover/movie`, { params: params });
   }
 

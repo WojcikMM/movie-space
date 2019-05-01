@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { MovieDetailsResult } from '../models/movie-details/MovieDetailsResult';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +14,8 @@ constructor(private _httpClient: HttpClient) { }
 getMovieDetails(movie_id: number): Observable<MovieDetailsResult> {
 
   const params = new HttpParams()
-    .set('api_key', environment.movieDbKey)
     .set('append_to_response', 'credits');
-return  this._httpClient.get<MovieDetailsResult>('https://api.themoviedb.org/3/movie/' + movie_id, {params: params});
+return  this._httpClient.get<MovieDetailsResult>(`${environment.movieDbUrl}/movie/${movie_id}`, {params: params});
 
 }
 
