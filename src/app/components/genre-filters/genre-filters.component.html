@@ -1,14 +1,18 @@
 
-<div class="filters-container">
-    <div class="genre-filters">
+<div class="genres_container">
+    <div class="genres_container__genres_menu">
         <!-- Place to insert genre filters list -->
     </div>
-    <div class="order-by-filters">
-        <button (click)="changeOrderFilter('release-date')" [disabled]="activeOrderFilterValue === 'release-date'">
-            <i class="fa fa-calendar"></i>
+    <div class="genres_container__ordering_switch">
+        <button class="genres_container__ordering_switch__button"
+                [disabled]="activeOrderFilterValue === 'release-date'"
+                (click)="changeOrderFilter('release-date')">
+            <i class="genres_container__ordering_switch__button__icon fa fa-calendar"></i>
         </button>
-        <button (click)="changeOrderFilter('rating-score')" [disabled]="activeOrderFilterValue === 'rating-score'">
-            <i class="fa fa-star"></i>
+        <button class="genres_container__ordering_switch__button" 
+                [disabled]="activeOrderFilterValue === 'rating-score'"
+                (click)="changeOrderFilter('rating-score')">
+            <i class="genres_container__ordering_switch__button__icon fa fa-star"></i>
         </button>
     </div>
 </div>

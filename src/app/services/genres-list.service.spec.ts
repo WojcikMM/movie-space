@@ -11,7 +11,7 @@ describe('Genres Service Tests', () => {
   beforeEach(() => {
 
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
-    genreListService = new GenresListService(<any>httpClientSpy);
+    genreListService = new GenresListService(httpClientSpy as any);
 
   });
 

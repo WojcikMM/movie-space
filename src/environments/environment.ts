@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  movieDbKey: 'f3e9f7d1677c7aa63c9ab526381eeceb',
+  movieDbKey: 'c3bd0986d5d28b4cdd3563221afc09b2',
   movieDbUrl: 'https://api.themoviedb.org/3',
   poster_url_prefix: 'https://image.tmdb.org/t/p/w300/',
 };

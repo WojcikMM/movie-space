@@ -1,0 +1,190 @@
+@import "../../../sass/variables";
+/* xl */
+@media screen and (min-width: 90.063em) {
+  .c-movie-card {
+    .c-movie-card__container {
+      font-size: 2em;
+    }
+  }
+}
+
+.c-movie-card {
+  perspective: 1000px;
+  &__container {
+    transition: 0.9s;
+    transform-style: preserve-3d;
+    &__front-image,
+    &__back-side-container {
+      backface-visibility: hidden;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 30em;
+    }
+
+    &__back-side-container {
+      transform: rotateY(180deg);
+      text-align: center;
+      font-style: oblique;
+      background-color: $theme-background-color;
+      vertical-align: middle;
+      position: absolute;
+      content: attr(data-value);
+
+      &__description {
+        margin: 0 2%;
+      }
+
+      .movie-info-grid {
+        display: grid;
+        grid-template-columns: 30% 50% 20%;
+
+        &__label {
+          text-align: right;
+          font-weight: bold;
+          grid-column: 1;
+        }
+
+        &__score-value {
+          grid-area: 1/3/4/3;
+          font-size: 3em;
+        }
+
+        &__release-date-value {
+          font-size: 1.2em;
+          text-align: center;
+        }
+
+        &__genre_list {
+          &__button {
+            box-shadow: -4px 4px 0 $theme-black-color;
+            background-color: $theme-inactive-color;
+            margin: 0.2em;
+            border-radius: 0.5em;
+            &--selected {
+              background-color: $theme-3-color;
+            }
+          }
+        }
+      }
+
+      .rating-box-container {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+
+        &__raiting-bar {
+          position: relative;
+          font-size: 2.7em;
+          font-family: FontAwesome;
+          display: inline-block;
+          color: $theme-inactive-color;
+
+          &::before {
+            content: "\f008 \f008 \f008 \f008 \f008";
+            display: block;
+            letter-spacing: $icons-spacing-rating;
+            text-align: center;
+          }
+
+          &__rating-score__value-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            overflow: hidden;
+            color: $theme-rating-active-color;
+
+            &::before {
+              content: "\f008 \f008 \f008 \f008 \f008";
+              display: block;
+              letter-spacing: $icons-spacing-rating;
+              text-align: center;
+              transition: all 3s ease-out;
+              overflow: hidden;
+              width: 0;
+              opacity: 0;
+            }
+          }
+        }
+        &__details-button {
+          width: 65%;
+          height: 8vh;
+          margin: 1em;
+          font-size: 2em;
+          position: relative;
+          top: 0;
+          left: 0;
+          transition: all 0.4s linear 0s;
+          box-sizing: content-box;
+          border-radius: 2.5vw 0;
+          box-shadow: -3px 3px $theme-black-color;
+          background-color: $theme-inactive-color;
+
+          &:hover {
+            top: 3px;
+            left: -3px;
+            background-color: $theme-3-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+.c-movie-card {
+  .rating-box-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    &__raiting-bar {
+      position: relative;
+      font-size: 2.7em;
+      font-family: FontAwesome;
+      display: inline-block;
+      color: $theme-inactive-color;
+
+      &::before {
+        content: "\f008 \f008 \f008 \f008 \f008";
+        display: block;
+        letter-spacing: $icons-spacing-rating;
+        text-align: center;
+      }
+
+      &__rating-score__value-bar {
+        position: absolute;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+        color: $theme-rating-active-color;
+
+        &::before {
+          content: "\f008 \f008 \f008 \f008 \f008";
+          display: block;
+          letter-spacing: $icons-spacing-rating;
+          text-align: center;
+          transition: all 3s ease-out;
+          overflow: hidden;
+          width: 0;
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    .c-movie-card__container {
+      transform: rotateY(180deg);
+      &__back-side-container {
+        .rating-box-container {
+          &__raiting-bar {
+            &__rating-score__value-bar::before {
+              opacity: 1;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

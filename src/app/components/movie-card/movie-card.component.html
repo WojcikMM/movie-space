@@ -1,24 +1,33 @@
-<div class='flip-container'>
-  <div class='flipper'>
-    <img [src]="getPosterUrl()" [alt]="movie.title" class="front" />
-    <div class="back">
-      <h2>{{movie.title}}</h2>
+<div class='c-movie-card'>
+  <div class='c-movie-card__container'>
+    <img class="c-movie-card__container__front-image" [src]="getPosterUrl()" [alt]="movie.title" />
+    <div class="c-movie-card__container__back-side-container">
+      <h2 class="c-movie-card__container__back-side-container__header">{{movie.title}}</h2>
       <div class="movie-info-grid">
-        <label>Release:</label>
-        <div class="release-grid">{{movie.release_date|date}}</div>
-        <label>Votes:</label>
+        <label class="movie-info-grid__label">Release:</label>
+        <div class="movie-info-grid__release-grid">{{movie.release_date|date}}</div>
+        <label class="movie-info-grid__label">Votes:</label>
         <div>{{movie.vote_count}}</div>
-        <label>Genres:</label>
-        <div class="genre-types"><button *ngFor="let genre of movie.genre_list" routerLink="/{{genre.id}}" >{{genre.name}}</button></div>
-        <span>{{movie.vote_average}}</span>
-      </div>
-      <p>{{movie.overview|movieDescription}}</p>
-    
-      <div class="rating-box-container">
-        <div class="rating-box">
-          <div class="rating" [style.width.%]="score"></div>
+        <label class="movie-info-grid__label">Genres:</label>
+        <div class="movie-info-grid__genre_list">
+          <button *ngFor="let genre of movie.genre_list" class="movie-info-grid__genre_list__button"
+            routerLink="/{{genre.id}}">
+            {{genre.name}}
+          </button>
         </div>
-        <button routerLink="/details/{{movie.id}}" class="details-button">Details</button>
+        <span class="movie-info-grid__score-value">{{movie.vote_average}}</span>
+      </div>
+      <p class="c-movie-card__container__back-side-container__description">
+        {{movie.overview|movieDescription}}
+      </p>
+
+      <div class="rating-box-container">
+        <div class="rating-box-container__raiting-bar">
+          <div class="rating-box-container__raiting-bar__rating-score__value-bar" [style.width.%]="score"></div>
+        </div>
+        <button class="rating-box-container__details-button" routerLink="/details/{{movie.id}}">
+          Details
+        </button>
       </div>
     </div>
   </div>

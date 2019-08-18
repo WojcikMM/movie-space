@@ -1,3 +1,4 @@
+@import '../../../sass/variables'; 
 .main-info-grid {
   display: grid;
   grid-template-rows: auto;
@@ -63,8 +64,8 @@
 }
 
 .main-info-grid .genres-buttons button {
-  box-shadow: -4px 4px 0 var(--theme-black-color);
-  background-color: var(--theme-3-color);
+  box-shadow: -4px 4px 0 $theme-black-color;
+  background-color: $theme-3-color;
   margin: 0.2em;
   border-radius: 0.5em;
 }

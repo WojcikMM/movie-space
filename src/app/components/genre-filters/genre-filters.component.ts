@@ -8,7 +8,7 @@ import { Subject } from 'rxjs';
 @Component({
   selector: 'app-genre-filters',
   templateUrl: './genre-filters.component.html',
-  styleUrls: ['./genre-filters.component.css']
+  styleUrls: ['./genre-filters.component.scss']
 })
 export class GenreFiltersComponent implements OnInit {
 
