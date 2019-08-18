@@ -11,6 +11,8 @@ export class MovieCardComponent implements OnInit {
 
   @Input()
   movie: Movie;
+  @Input()
+  selectedGenreId = 0;
   score = 0;
 
   ngOnInit(): void {

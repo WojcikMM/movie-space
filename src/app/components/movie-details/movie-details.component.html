@@ -13,7 +13,9 @@
 
     <label>Genres: </label>
     <div class="genres-buttons">
-      <button  *ngFor="let genre of movieDetals.genres" routerLink="/{{genre.id}}" >{{genre.name}}</button>
+      <button *ngFor="let genre of movieDetals.genres" routerLink="/{{genre.id}}">
+        {{genre.name}}
+      </button>
     </div>
 
     <h2>Overview</h2>
@@ -26,7 +28,7 @@
     <h2>Cast</h2>
     <div class="cast-person-container p-g">
       <div *ngFor="let castPerson of castArray" class="cast-person ui-g-12 ui-md-6 ui-lg-4 ui-xl-3">
-        <img [src]="getCastPersonUrl(castPerson.profile_path, castPerson.gender)" [alt]="castPerson.name"/>
+        <img [src]="getCastPersonUrl(castPerson.profile_path, castPerson.gender)" [alt]="castPerson.name" />
         <h4>{{castPerson.name}}</h4>
       </div>
     </div>

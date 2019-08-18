@@ -8,6 +8,6 @@
 
 <ng-template #movies class="p-g app-movie-cards-container">
     <div *ngFor="let movie of moviesList" class="ui-g-12 ui-md-6 ui-lg-4 ui-xl-3">
-        <app-movie-card [movie]="movie"></app-movie-card>
+        <app-movie-card [selectedGenreId]="selectedGenreId"  [movie]="movie"></app-movie-card>
     </div>
 </ng-template>

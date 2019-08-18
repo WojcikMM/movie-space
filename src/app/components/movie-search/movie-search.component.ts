@@ -12,15 +12,15 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 })
 export class MovieSearchComponent {
 
-  private _searchResultsPage = 1;
-  private _maxSearchResultsCount = 5;
-  private _debounceTimeout = 400;
+  private searchResultsPage = 1;
+  private maxSearchResultsCount = 5;
+  private debounceTimeout = 400;
   searchResults: Array<Movie>;
   term = new FormControl();
 
-  constructor(private _movieSearchService: MovieSearchService) {
+  constructor(private movieSearchService: MovieSearchService) {
     this.term.valueChanges
-    .pipe(debounceTime(this._debounceTimeout))
+    .pipe(debounceTime(this.debounceTimeout))
     .pipe(distinctUntilChanged())
     .subscribe(searchQuery => this.searchMovies(searchQuery));
   }
@@ -30,10 +30,10 @@ private searchMovies(query: string) {
     this.searchResults = [];
   } else {
 
-    this._movieSearchService
-    .searchForMovies(query, this._searchResultsPage)
+    this.movieSearchService
+    .searchForMovies(query, this.searchResultsPage)
     .subscribe(result => {
-      this.searchResults = result.results.slice(0, this._maxSearchResultsCount);
+      this.searchResults = result.results.slice(0, this.maxSearchResultsCount);
     });
 }}
 

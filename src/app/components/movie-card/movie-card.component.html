@@ -10,7 +10,9 @@
         <div>{{movie.vote_count}}</div>
         <label class="movie-info-grid__label">Genres:</label>
         <div class="movie-info-grid__genre_list">
-          <button *ngFor="let genre of movie.genre_list" class="movie-info-grid__genre_list__button"
+          <button *ngFor="let genre of movie.genre_list" 
+          class="movie-info-grid__genre_list__button"
+          [class.movie-info-grid__genre_list__button--selected]="genre.id === selectedGenreId"
             routerLink="/{{genre.id}}">
             {{genre.name}}
           </button>
