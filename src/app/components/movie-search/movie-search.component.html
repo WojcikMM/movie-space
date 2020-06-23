@@ -1,16 +1,15 @@
 <div class="c-movie-search">
-    <input class="c-movie-search__input"
-    autocomplete="off" 
-    [formControl]="term" 
-    placeholder='Type here to search movie' 
-    (blur)='endOfSearching()' />
-    
-    <div class="c-movie-search__autocomplete-items-container">
-        <div  *ngFor='let searchResult of searchResults'
-        class="c-movie-search__autocomplete-items-container__item"
-        routerLink="/details/{{searchResult.id}}" 
-        >
-            {{searchResult.title}} ({{searchResult.release_date|date:'yyyy'}})
-        </div>
+  <input class="c-movie-search__input"
+         autocomplete="off"
+         [formControl]="term"
+         placeholder='Type here to search movie'
+         (blur)='endOfSearching()'/>
+
+  <div class="c-movie-search__autocomplete-items-container">
+    <div *ngFor='let searchResult of searchResults'
+         class="c-movie-search__autocomplete-items-container__item"
+         routerLink="/details/{{searchResult.id}}">
+      {{searchResult.title}} ({{searchResult.release_date|date:'yyyy'}})
     </div>
+  </div>
 </div>

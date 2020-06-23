@@ -4,7 +4,7 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
-import { AppComponent } from './components/app/app.component';
+import { AppComponent } from './components/app.component';
 import { HomeComponent } from './components/home/home.component';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { MovieDescriptionPipe } from './pipes/movie-description.pipe';
@@ -15,6 +15,7 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
 import { GenreFiltersComponent } from './components/genre-filters/genre-filters.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { TheMovieDbInterceptor } from './interceptors/the-moviedb-interceptor';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TheMovieDbInterceptor } from './interceptors/the-moviedb-interceptor';
     NotFoundComponent,
     MovieDetailsComponent,
     GenreFiltersComponent,
-    LoaderComponent
+    LoaderComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
