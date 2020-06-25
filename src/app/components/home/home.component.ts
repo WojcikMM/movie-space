@@ -1,8 +1,8 @@
-import { Genre } from './../../models/genre';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Movie } from '../../models/movie';
-import { GenresListService } from './../../services/genres-list.service';
+import { Genre } from '../../models/genre';
+import { GenresListService } from '../../services/genres-list.service';
 import { MovieDiscoverService } from '../../services/movie-discover.service';
 
 @Component({

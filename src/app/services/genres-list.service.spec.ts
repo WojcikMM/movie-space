@@ -1,4 +1,4 @@
-import { GenreList } from './../models/genre-list';
+import { GenreList } from '../models/genre-list';
 import { GenresListService } from './genres-list.service';
 import { of } from 'rxjs';
 

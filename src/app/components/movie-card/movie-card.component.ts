@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Movie } from '../../models/movie';
 import { environment } from '../../../environments/environment';
 
@@ -14,15 +14,9 @@ export class MovieCardComponent implements OnInit {
   @Input()
   selectedGenreId = 0;
   score = 0;
+  posterPrefix = environment.poster_url_prefix;
 
   ngOnInit(): void {
     this.score = this.movie.vote_average * 10;
   }
-
-  getPosterUrl() {
-    return this.movie.poster_path === null ?
-      '/assets/poster-not-found.jpg'
-      : environment.poster_url_prefix + this.movie.poster_path;
-  }
-
 }

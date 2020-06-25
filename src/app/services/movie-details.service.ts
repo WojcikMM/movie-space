@@ -11,11 +11,11 @@ export class MovieDetailsService {
 
 constructor(private _httpClient: HttpClient) { }
 
-getMovieDetails(movie_id: number): Observable<MovieDetailsResult> {
+getMovieDetails(movieId: number): Observable<MovieDetailsResult> {
 
   const params = new HttpParams()
     .set('append_to_response', 'credits');
-return  this._httpClient.get<MovieDetailsResult>(`${environment.movieDbUrl}/movie/${movie_id}`, {params: params});
+return  this._httpClient.get<MovieDetailsResult>(`${environment.movieDbUrl}/movie/${movieId}`, {params});
 
 }
 

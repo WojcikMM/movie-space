@@ -1,4 +1,4 @@
-
+<app-header></app-header>
 <app-movie-search></app-movie-search>
 
 <app-genre-filters *ngIf="moviesList.length > 0" (moviesOrderChange)="moviesOrderChanged($event)" [moviesList]="moviesList" [genres]="genreList"></app-genre-filters>

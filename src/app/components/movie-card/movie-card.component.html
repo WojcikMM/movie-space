@@ -1,6 +1,7 @@
 <div class='c-movie-card'>
   <div class='c-movie-card__container'>
-    <img class="c-movie-card__container__front-image" [src]="getPosterUrl()" [alt]="movie.title" />
+    <img *ngIf="!movie.poster_path" class="c-movie-card__container__front-image" src="/assets/poster-not-found.jpg" [alt]="movie.title" />
+    <img *ngIf="movie.poster_path" class="c-movie-card__container__front-image" [src]="posterPrefix + movie.poster_path" [alt]="movie.title" />
     <div class="c-movie-card__container__back-side-container">
       <h2 class="c-movie-card__container__back-side-container__header">{{movie.title}}</h2>
       <div class="movie-info-grid">

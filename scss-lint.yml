@@ -1,0 +1,13 @@
+scss_files: "**/*.scss"
+
+linters:
+
+  NestingDepth:
+    enabled: false
+
+  SelectorFormat:
+    convention: hyphenated_BEM
+
+  BemDepth:
+    enabled: true
+    max_elements: 10

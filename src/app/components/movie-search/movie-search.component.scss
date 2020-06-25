@@ -1,24 +1,22 @@
 .c-movie-search {
+  margin: 2em 0 2.5em;
   position: relative;
-  /* display: inline-block; */
-  margin: 2em 0 2.5em 0;
 
   &__input {
-    width: 18em;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 3.5vw;
-    background-color: white;
-    background-image: url("/assets/search-icon.svg");
+    background-color: #fff;
+    background-image: url('~src/assets/search-icon.svg');
     background-position: 0 50%;
     background-repeat: no-repeat;
     background-size: 1em;
-    padding-left: 1.2em;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-    margin: 0 auto;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
     display: block;
+    font-size: 3.5vw;
+    margin: 0 auto;
+    padding-left: 1.2em;
+    transition: width .4s ease-in-out;
+    width: 18em;
 
     &:focus {
       width: 70vw;
@@ -26,26 +24,26 @@
   }
 
   &__autocomplete-items-container {
-    position: absolute;
     border: 1px solid #d4d4d4;
-    border-bottom: none;
-    border-top: none;
+    border-bottom: 0;
     border-radius: 30px;
-    z-index: 99;
-    top: 100%;
+    border-top: 0;
     left: 0;
+    position: absolute;
     right: 0;
+    top: 100%;
+    z-index: 99;
 
     &__item {
-      padding: 1%;
-      cursor: pointer;
+      background-color: #e9e9e9;
       border-bottom: 1px solid #d4d4d4;
-      text-align: center;
+      cursor: pointer;
       font-size: 2vw;
       margin: 0 15%;
-      background-color: #e9e9e9;
+      padding: 1%;
+      text-align: center;
 
-    &--active,
+      &--active,
       &:hover {
         background-color: #598392;
       }

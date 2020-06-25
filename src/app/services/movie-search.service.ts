@@ -15,6 +15,6 @@ export class MovieSearchService {
     .set('query', query)
     .set('page', page.toString());
 
-    return this._httpClient.get<MovieApiResult>(`${environment.movieDbUrl}/search/movie`, { params: params});
+    return this._httpClient.get<MovieApiResult>(`${environment.movieDbUrl}/search/movie`, { params});
   }
 }

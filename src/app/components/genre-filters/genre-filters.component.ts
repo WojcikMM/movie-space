@@ -1,5 +1,5 @@
-import { Movie } from './../../models/movie';
-import { Genre } from './../../models/genre';
+import { Movie } from '../../models/movie';
+import { Genre } from '../../models/genre';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
 

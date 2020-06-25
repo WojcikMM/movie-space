@@ -121,6 +121,12 @@
               "devServerTarget": "movie-space-app:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+          "baseHref":"/angular-family-movies/"
+          }
         }
       }
     }

@@ -1,8 +1,11 @@
-.header_link_container{
-  display: block;
-  .header_link_container_logo{
+.header {
+  &__link {
     display: block;
-    margin: 0 auto;
-    width: 30vw;
+
+    &__logo {
+      display: block;
+      margin: 0 auto;
+      width: 30vw;
+    }
   }
 }

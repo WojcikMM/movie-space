@@ -15,7 +15,7 @@ export class MovieDiscoverService {
   constructor(private _httpClient: HttpClient) { }
 
   getReleases(genreId?: number): Observable<MovieApiResult> {
-    const requestPage = '1'; // future pageing
+    const requestPage = '1'; // future paging
 
     let params = new HttpParams()
       .set('primary_release_date.gte', this.addMonths(-1))
@@ -24,7 +24,7 @@ export class MovieDiscoverService {
     if (!isNaN(genreId)) {
       params = params.set('with_genres', genreId.toString());
     }
-    return this._httpClient.get<MovieApiResult>(`${environment.movieDbUrl}/discover/movie`, { params: params });
+    return this._httpClient.get<MovieApiResult>(`${environment.movieDbUrl}/discover/movie`, { params });
   }
 
   addMonths = (monthsLength: number) =>  moment().add(monthsLength, 'months').format('YYYY-MM-DD');
