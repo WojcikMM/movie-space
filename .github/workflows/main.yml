@@ -43,8 +43,12 @@ jobs:
     - name: Lint
       run: npm run lint
 
-    - name: Build
-      run: npm run build -- --prod
-
-    - name: Deploy
-      run: npm run deploy
+    - name: All things angular
+      uses: AhsanAyaz/angular-deploy-gh-pages-actions
+      with:
+        github_access_token: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
+        build_configuration: production
+        run_lint: 'true'
+        base_href: /angular-family-movies/
+        deploy_branch: gh-pages
+        build_folder: dist/movie-space-app
