@@ -8,7 +8,7 @@ import { MovieDiscoverService } from '../../services/movie-discover.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  providers: [MovieDiscoverService, GenresListService]
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
 

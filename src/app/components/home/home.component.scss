@@ -1,0 +1,11 @@
+.home {
+  &__movie-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    &__item {
+      flex: 25em;
+      padding: 1em;
+    }
+  }
+}
