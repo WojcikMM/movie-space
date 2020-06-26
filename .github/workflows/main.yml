@@ -27,7 +27,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '10.x'
-        
+
     - uses: actions/cache@v2.0.0
       with:
         path: ~/.npm
@@ -36,12 +36,15 @@ jobs:
 
     - name: Install dependencies
       run: npm ci
-    
+
     #- name: Unit tests
     #  run: npm run test
-    
+
     - name: Lint
       run: npm run lint
 
     - name: Build
       run: npm run build -- --prod
+
+    - name: Deploy
+      run: npm run deploy
