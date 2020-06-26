@@ -44,7 +44,7 @@ jobs:
       run: npm run lint
 
     - name: All things angular
-      uses: AhsanAyaz/angular-deploy-gh-pages-actions
+      uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.2.0
       with:
         github_access_token: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
         build_configuration: production
