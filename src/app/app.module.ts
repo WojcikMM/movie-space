@@ -16,6 +16,9 @@ import { GenreFiltersComponent } from './components/genre-filters/genre-filters.
 import { LoaderComponent } from './components/loader/loader.component';
 import { TheMovieDbInterceptor } from './interceptors/the-moviedb-interceptor';
 import { HeaderComponent } from './components/header/header.component';
+import { MovieCardFrontSideComponent } from './components/movie-card/movie-card-front-side/movie-card-front-side.component';
+import { MovieCardBackSideComponent } from './components/movie-card/movie-card-back-side/movie-card-back-side.component';
+import { MovieInfoGridComponent } from './components/movie-card/movie-card-back-side/movie-info-grid/movie-info-grid.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { HeaderComponent } from './components/header/header.component';
     MovieDetailsComponent,
     GenreFiltersComponent,
     LoaderComponent,
-    HeaderComponent
+    HeaderComponent,
+    MovieCardFrontSideComponent,
+    MovieCardBackSideComponent,
+    MovieInfoGridComponent
   ],
   imports: [
     BrowserModule,

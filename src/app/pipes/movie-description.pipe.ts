@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class MovieDescriptionPipe implements PipeTransform {
 
   private _noDescriptionText = 'There is no description jet.';
-  private _pattern = /(^.{1,250}\.)/;
+  private _pattern = /(^.{1,200}\.)/;
 
   transform(value: string): any {
     if (!value) {

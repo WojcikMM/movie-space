@@ -1,0 +1,5 @@
+@import '../movie-card.component';
+
+.movie-card-front-side {
+  @include movie-card-side-mixin;
+}

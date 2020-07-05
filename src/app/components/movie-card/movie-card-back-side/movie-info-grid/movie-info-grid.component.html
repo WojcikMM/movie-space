@@ -1,0 +1,27 @@
+<div class="movie-info-grid">
+
+  <div class="movie-info-grid__row">
+    <label class="movie-info-grid__row__label">Release:</label>
+    <div class="movie-info-grid__row__value">
+      {{movie.release_date|date}}
+    </div>
+  </div>
+
+  <div class="movie-info-grid__row">
+    <label class="movie-info-grid__row__label">Votes:</label>
+    <div class="movie-info-grid__row__value">
+      {{movie.vote_average}} ({{movie.vote_count}})
+    </div>
+  </div>
+
+  <div class="movie-info-grid__row">
+    <label class="movie-info-grid__row__label">Genres:</label>
+  </div>
+  <div class="movie-info-grid__genre-list">
+    <div *ngFor="let genre of movie.genre_list"
+         class="movie-info-grid__genre-list__genre"
+         [class.movie-info-grid__genre-list__genre--selected]="selectedGenreIds.indexOf(genre.id) !== -1">
+      {{genre.name}}
+    </div>
+  </div>
+</div>

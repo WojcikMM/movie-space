@@ -12,7 +12,7 @@ import { Cast } from 'src/app/models/movie-details/Cast';
 })
 export class MovieDetailsComponent {
   movieDetails: MovieDetailsResult;
-  posterPrefix: string  = environment.poster_url_prefix;
+  posterPrefix: string  = environment.posterUrlPrefix;
   castArray: Array<Cast>;
 
   constructor(private _movieDetailService: MovieDetailsService, private route: ActivatedRoute) {

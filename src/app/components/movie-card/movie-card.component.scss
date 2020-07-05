@@ -1,4 +1,16 @@
-@import '../../../sass/variables';
+//@import '../../../sass/variables';
+@import '~src/sass/variables';
+
+@mixin movie-card-side-mixin {
+  backface-visibility: hidden;
+  border-radius: 2em;
+  height: 25em;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+
 // xl
 @media screen and (min-width: 9.063em) {
   .c-movie-card {
@@ -14,145 +26,16 @@
   &__container {
     transform-style: preserve-3d;
     transition: .9s;
-
-    &__front-image,
-    &__back-side-container {
-      backface-visibility: hidden;
-      border-radius: 2em;
-      height: 30em;
-      left: 0;
-      top: 0;
-      width: 100%;
-    }
-
-    &__back-side-container {
-      background-color: $theme-background-color;
-      content: attr(data-value);
-      font-style: oblique;
-      position: absolute;
-      text-align: center;
-      transform: rotateY(180deg);
-      vertical-align: middle;
-
-      &__header {
-        padding: .5ch 2ch;
-      }
-
-      &__description {
-        padding: .5ch 1ch;
-      }
-
-      .movie-info-grid {
-        display: grid;
-        grid-template-columns: 25% 45% 30%;
-
-        &__label {
-          font-weight: bold;
-          grid-column: 1;
-          text-align: right;
-        }
-
-        &__score-value {
-          font-size: 3em;
-          grid-area: 1/3/4/3;
-        }
-
-        &__release-date-value {
-          font-size: 1.2em;
-          text-align: center;
-        }
-
-        &__genre_list {
-          &__button {
-            background-color: $theme-inactive-color;
-            border-radius: .5em;
-            box-shadow: -4px 4px 0 $theme-black-color;
-            margin: .2em;
-
-            &--selected {
-              background-color: $theme-3-color;
-            }
-          }
-        }
-      }
-
-      .rating-box-container {
-        bottom: 0;
-        position: absolute;
-        width: 100%;
-
-        &__rating-bar {
-          color: $theme-inactive-color;
-          display: inline-block;
-          font-family: FontAwesome, serif;
-          font-size: 2em;
-          position: relative;
-
-          &::before {
-            content: '\f008 \f008 \f008 \f008 \f008';
-            display: block;
-            letter-spacing: $icons-spacing-rating;
-            text-align: center;
-          }
-
-          &__rating-score__value-bar {
-            color: $theme-rating-active-color;
-            left: 0;
-            overflow: hidden;
-            position: absolute;
-            top: 0;
-
-            &::before {
-              content: '\f008 \f008 \f008 \f008 \f008';
-              display: block;
-              letter-spacing: $icons-spacing-rating;
-              opacity: 0;
-              overflow: hidden;
-              text-align: center;
-              transition: all 3s ease-out;
-              width: 0;
-            }
-          }
-        }
-
-        &__details-button {
-          background-color: $theme-inactive-color;
-          border-radius: 2.5vw 0;
-          box-shadow: -3px 3px $theme-black-color;
-          box-sizing: content-box;
-          font-size: 2em;
-          height: 1.3em;
-          left: 0;
-          margin: 1em;
-          position: relative;
-          top: 0;
-          transition: all .4s linear 0s;
-          width: 65%;
-
-          &:hover {
-            background-color: $theme-3-color;
-            left: -3px;
-            top: 3px;
-          }
-        }
-      }
-    }
   }
 
   &:hover {
     .c-movie-card__container {
       transform: rotateY(180deg);
+    }
 
-      &__back-side-container {
-        .rating-box-container {
-          &__rating-bar {
-            &__rating-score__value-bar::before {
-              opacity: 1;
-              width: 100%;
-            }
-          }
-        }
-      }
+    ::ng-deep .movie-card-back-side__footer__rating-bar__value-bar::before {
+      opacity: 1;
+      width: 100%;
     }
   }
 }
