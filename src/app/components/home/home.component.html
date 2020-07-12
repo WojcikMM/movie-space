@@ -1,14 +1,16 @@
 <app-header></app-header>
 <app-movie-search></app-movie-search>
 
-<app-genre-filters *ngIf="moviesList.length > 0" (moviesOrderChange)="moviesOrderChanged($event)"
-                   [moviesList]="moviesList" [genres]="genreList"></app-genre-filters>
+<app-genre-filters *ngIf="moviesList.length > 0"
+                   [currentMovieType]="currentMovieType"
+                   (movieTypeChangedEvent)="setMovieType($event)">
+</app-genre-filters>
 
 
 <app-loader *ngIf="loading"></app-loader>
 
 <div class="home__movie-container">
   <div *ngFor="let movie of moviesList" class="home__movie-container__item">
-    <app-movie-card [selectedGenreId]="selectedGenreId" [movie]="movie"></app-movie-card>
+    <app-movie-card [movie]="movie"></app-movie-card>
   </div>
 </div>

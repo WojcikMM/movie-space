@@ -1,18 +1,14 @@
-
 <div class="genres__container">
-    <div class="genres__container__genres_menu">
-        <!-- Place to insert genre filters list -->
-    </div>
-    <div class="genres__container__ordering_switch">
-        <button class="genres__container__ordering_switch__button"
-                [disabled]="activeOrderFilterValue === 'release-date'"
-                (click)="changeOrderFilter('release-date')">
-            <i class="genres__container__ordering_switch__button__icon fa fa-calendar"></i>
-        </button>
-        <button class="genres__container__ordering_switch__button"
-                [disabled]="activeOrderFilterValue === 'rating-score'"
-                (click)="changeOrderFilter('rating-score')">
-            <i class="genres__container__ordering_switch__button__icon fa fa-star"></i>
-        </button>
-    </div>
+  <div class="genres__container__genres_menu">
+    <!-- Place to insert genre filters list -->
+  </div>
+  <div class="genres__container__ordering_switch">
+    <button *ngFor="let filter of filtersViewModels"
+            class="genres__container__ordering_switch__button"
+            [class.genres__container__ordering_switch__button--active]="filter.isActive"
+            [disabled]="filter.isActive"
+            (click)="movieTypeChangedEvent.emit(filter.type)">
+      {{filter.label}}
+    </button>
+  </div>
 </div>

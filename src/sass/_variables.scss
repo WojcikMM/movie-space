@@ -5,3 +5,15 @@ $theme-inactive-color: #d8cfaf;
 $theme-black-color: #404040;
 $theme-rating-active-color: #f4442e;
 $icons-spacing-rating: .3em;
+
+// Buttons
+
+$button-border-color: #000;
+$button-inactive-color: #ccc;
+
+// responsive screen sizes
+$breakpoint-max-width-mobile: 480px;
+$breakpoint-max-width-tablets: 768px;
+$breakpoint-max-width-small-screen: 1024px;
+$breakpoint-max-width-medium-screen: 1200px;
+$breakpoint-min-width-large-screen: 1201px;

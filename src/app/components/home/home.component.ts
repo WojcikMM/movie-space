@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Movie } from '../../models/movie';
-import { Genre } from '../../models/genre';
-import { GenresListService } from '../../services/genres-list.service';
-import { MovieDiscoverService } from '../../services/movie-discover.service';
+import { HomeService } from './home.service';
+import { MovieType } from '../../models/movie-type.enum';
 
 @Component({
   selector: 'app-home',
@@ -12,33 +10,31 @@ import { MovieDiscoverService } from '../../services/movie-discover.service';
 })
 export class HomeComponent implements OnInit {
 
-  moviesList: Array<Movie>;
-  genreList: Array<Genre>;
+  moviesList: Array<Movie> = [];
   loading: boolean;
-  selectedGenreId?: number;
+  public currentMovieType: MovieType;
 
-  constructor(private movieService: MovieDiscoverService, private genreService: GenresListService, private route: ActivatedRoute) {}
-
-  moviesOrderChanged(moviesList: Array<Movie>) {
-    this.moviesList = moviesList;
- }
-
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.loading = true;
-      this.selectedGenreId = parseInt(params.id, 10);
-      this.moviesList = [];
-      this.genreService.getGenresList().subscribe(genreResults => {
-        this.genreList = genreResults.genres;
-        this.movieService.getReleases(this.selectedGenreId).subscribe(movies => {
-          this.moviesList = movies.results.map(movie => {
-            movie.genre_list = genreResults.genres.filter(m => movie.genre_ids.indexOf(m.id) !== -1);
-            return movie;
-          });
-          this.loading = false;
-        });
-      });
-    });
+  constructor(private readonly _homeService: HomeService) {
+    this.currentMovieType = _homeService.movieType;
   }
 
+  setMovieType(movieType: MovieType) {
+    this.moviesList = [];
+    this._homeService.movieType = this.currentMovieType = movieType;
+    this._getMovies();
+  }
+
+  ngOnInit(): void {
+    this._getMovies();
+  }
+
+  private _getMovies() {
+    this._homeService.getMovies()
+      .subscribe((movies: Movie[]) => {
+        this.moviesList.push(...movies);
+        this.loading = false;
+      }, () => {
+        this.loading = false;
+      });
+  }
 }

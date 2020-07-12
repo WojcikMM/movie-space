@@ -7,7 +7,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './components/app.component';
 import { HomeComponent } from './components/home/home.component';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
-import { MovieDescriptionPipe } from './pipes/movie-description.pipe';
 import { MovieSearchComponent } from './components/movie-search/movie-search.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -25,7 +24,6 @@ import { MovieInfoGridComponent } from './components/movie-card/movie-card-back-
     AppComponent,
     HomeComponent,
     MovieCardComponent,
-    MovieDescriptionPipe,
     MovieSearchComponent,
     NotFoundComponent,
     MovieDetailsComponent,
