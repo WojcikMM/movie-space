@@ -1,8 +1,7 @@
 <app-header></app-header>
 <app-movie-search></app-movie-search>
 
-<app-genre-filters *ngIf="moviesList.length > 0"
-                   [currentMovieType]="currentMovieType"
+<app-genre-filters [currentMovieType]="currentMovieType"
                    (movieTypeChangedEvent)="setMovieType($event)">
 </app-genre-filters>
 
@@ -10,7 +9,8 @@
 <app-loader *ngIf="loading"></app-loader>
 
 <div class="home__movie-container">
-  <div *ngFor="let movie of moviesList" class="home__movie-container__item">
+  <div *ngFor="let movie of movies$ | async"
+       class="home__movie-container__item">
     <app-movie-card [movie]="movie"></app-movie-card>
   </div>
 </div>
