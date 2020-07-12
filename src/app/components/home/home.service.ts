@@ -39,6 +39,7 @@ export class HomeService {
   }
 
   public getMovies$(): Observable<Movie[]> {
+    // TODO: Add fetching generes (once) and map it to movies in "map" pipe operator
     return combineLatest([this._movieType$, this._currentPage$]).pipe(
       mergeMap(([movieType, currentPage]: [MovieType, number]) =>
         this._movieClientService.getMovieByType(movieType, currentPage)
