@@ -1,10 +1,9 @@
+import { Component } from '@angular/core';
 import {
-  Component,
-  OnInit
-} from '@angular/core';
-import { Movie } from '../../models/movie';
+  MovieDto,
+  MovieType
+} from '../../modules/shared';
 import { HomeService } from './home.service';
-import { MovieType } from '../../models/movie-type.enum';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
@@ -13,10 +12,10 @@ import { Observable } from 'rxjs';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   public loading = true;
   public currentMovieType: MovieType;
-  public movies$: Observable<Movie[]> = this._homeService.getMovies$().pipe(tap(() => {
+  public movies$: Observable<MovieDto[]> = this._homeService.getMovies$().pipe(tap(() => {
     this.loading = false;
   }));
 
@@ -27,8 +26,5 @@ export class HomeComponent implements OnInit {
   setMovieType(movieType: MovieType) {
     this.loading = true;
     this._homeService.movieType = this.currentMovieType = movieType;
-  }
-
-  ngOnInit(): void {
   }
 }

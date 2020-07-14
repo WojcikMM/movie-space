@@ -14,3 +14,5 @@ The one of the main objectives of the project is writing styles with Pure CSS.
 - [ ] Fix problem with displaying lot of description text
 - [ ] Fix problem with formatting of information rectangle in movie card
 - [ ] Create new filtrating panel ( multiple geneses to select )
+- [ ] Split source code to modules / packages
+- [ ] Add custom library for own lint rules

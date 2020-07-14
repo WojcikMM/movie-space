@@ -1,5 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Movie } from '../../models/movie';
+import {
+  Component,
+  Input,
+  OnInit
+} from '@angular/core';
+import { MovieDto } from '../../modules/shared';
 
 @Component({
   selector: 'app-movie-card',
@@ -9,7 +13,7 @@ import { Movie } from '../../models/movie';
 export class MovieCardComponent implements OnInit {
 
   @Input()
-  movie: Movie;
+  movie: MovieDto;
   @Input()
   selectedGenreId = 0;
   score = 0;

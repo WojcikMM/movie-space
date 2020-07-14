@@ -8,9 +8,11 @@ import {
   map,
   mergeMap
 } from 'rxjs/operators';
-import { Movie } from '../../models/movie';
-import { MovieType } from '../../models/movie-type.enum';
-import { MovieClientService } from '../../clients/movies/movie-client.service';
+import {
+  MovieDto,
+  MovieType,
+  MoviesClientService
+} from '../../modules/shared';
 
 
 @Injectable({
@@ -20,9 +22,9 @@ export class HomeService {
 
   private readonly _movieType$: BehaviorSubject<MovieType> = new BehaviorSubject<MovieType>(MovieType.NOW_PLAYING);
   private readonly _currentPage$: BehaviorSubject<number> = new BehaviorSubject<number>(1);
-  private _lastResults: Movie[] = [];
+  private _lastResults: MovieDto[] = [];
 
-  constructor(private readonly _movieClientService: MovieClientService) {
+  constructor(private readonly _movieClientService: MoviesClientService) {
   }
 
   public get movieType(): MovieType {
@@ -38,8 +40,8 @@ export class HomeService {
     this._currentPage$.next(this._currentPage$.value + 1);
   }
 
-  public getMovies$(): Observable<Movie[]> {
-    // TODO: Add fetching generes (once) and map it to movies in "map" pipe operator
+  public getMovies$(): Observable<MovieDto[]> {
+    // TODO: Add fetching genres (once) and map it to movies in "map" pipe operator
     return combineLatest([this._movieType$, this._currentPage$]).pipe(
       mergeMap(([movieType, currentPage]: [MovieType, number]) =>
         this._movieClientService.getMovieByType(movieType, currentPage)

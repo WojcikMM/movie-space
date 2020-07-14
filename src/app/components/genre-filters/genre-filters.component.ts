@@ -4,7 +4,7 @@ import {
   Component,
   EventEmitter,
 } from '@angular/core';
-import { MovieType } from '../../models/movie-type.enum';
+import { MovieType } from '../../modules/shared';
 import { GenreFilterButtonViewModel } from './genre-filter-button.view-model';
 
 

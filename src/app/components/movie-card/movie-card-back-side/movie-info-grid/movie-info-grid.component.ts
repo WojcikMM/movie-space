@@ -1,5 +1,8 @@
-import { Component, Input } from '@angular/core';
-import { Movie } from '../../../../models/movie';
+import {
+  Component,
+  Input
+} from '@angular/core';
+import { MovieDto } from '../../../../modules/shared';
 
 @Component({
   selector: 'app-movie-info-grid',
@@ -8,6 +11,6 @@ import { Movie } from '../../../../models/movie';
 })
 export class MovieInfoGridComponent {
 
-  @Input() movie: Movie;
+  @Input() movie: MovieDto;
   @Input() selectedGenreIds: number[];
 }

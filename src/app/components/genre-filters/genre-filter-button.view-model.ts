@@ -1,4 +1,4 @@
-import { MovieType } from '../../models/movie-type.enum';
+import { MovieType } from '../../modules/shared';
 
 export interface GenreFilterButtonViewModel {
   type: MovieType,
