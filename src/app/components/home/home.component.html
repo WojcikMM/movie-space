@@ -8,9 +8,11 @@
 
 <app-loader *ngIf="loading"></app-loader>
 
-<div class="home__movie-container">
-  <div *ngFor="let movie of movies$ | async"
-       class="home__movie-container__item">
-    <app-movie-card [movie]="movie"></app-movie-card>
+<app-infinite-scroll (scrolledToBottomEvent)="onScrolledToBottom()">
+  <div class="home__movie-container">
+    <div *ngFor="let movie of movies$ | async"
+         class="home__movie-container__item">
+      <app-movie-card [movie]="movie"></app-movie-card>
+    </div>
   </div>
-</div>
+</app-infinite-scroll>

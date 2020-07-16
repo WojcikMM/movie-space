@@ -27,4 +27,9 @@ export class HomeComponent {
     this.loading = true;
     this._homeService.movieType = this.currentMovieType = movieType;
   }
+
+  onScrolledToBottom() {
+    this.loading = true;
+    this._homeService.nextPage();
+  }
 }
