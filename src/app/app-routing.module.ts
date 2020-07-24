@@ -1,19 +1,32 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
+import {
+  Routes,
+  RouterModule
+} from '@angular/router';
+import { GLOBAL_CONST } from './modules/shared/global.const';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: ':id', component: HomeComponent, pathMatch: 'full' },
-  { path: 'details/:id', component: MovieDetailsComponent },
-  { path: '**', component: NotFoundComponent }
+  {
+    path: '',
+    redirectTo: GLOBAL_CONST.ROUTES.LIST,
+    pathMatch: 'full'
+  },
+  {
+    path: GLOBAL_CONST.ROUTES.LIST,
+    loadChildren: () => import('./modules/features/movie-list').then(module => module.MovieListModule)
+  },
+  {
+    path: GLOBAL_CONST.ROUTES.PREVIEW,
+    loadChildren: () => import('./modules/features/movie-preview').then(module => module.MoviePreviewModule)
+  },
+  {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
