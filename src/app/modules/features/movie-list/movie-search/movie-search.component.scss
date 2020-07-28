@@ -1,3 +1,5 @@
+@import '../../../../../sass/variables';
+
 .c-movie-search {
   margin: 2em 0 2.5em;
   position: relative;
@@ -12,16 +14,36 @@
     border-radius: 4px;
     box-sizing: border-box;
     display: block;
-    font-size: 3.5vw;
+    font-size: 1.1em;
     margin: 0 auto;
     padding-left: 1.2em;
     transition: width .4s ease-in-out;
-    width: 18em;
+    width: 14em;
 
     &:focus {
-      width: 70vw;
+      outline-color: $theme-color--active;
+      width: 16em;
     }
   }
+
+  @media screen and (min-width: $breakpoint-min-width-mobile-medium) {
+    &__input {
+      font-size: 1.4em;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-min-width-tablet) {
+    &__input {
+      font-size: 2.2em;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-min-width-laptop-large) {
+    &__input {
+      font-size: 3.5em;
+    }
+  }
+
 
   &__autocomplete-items-container {
     border: 1px solid #d4d4d4;
@@ -38,7 +60,7 @@
       background-color: #e9e9e9;
       border-bottom: 1px solid #d4d4d4;
       cursor: pointer;
-      font-size: 2vw;
+      font-size: 1em;
       margin: 0 15%;
       padding: 1%;
       text-align: center;
@@ -48,5 +70,12 @@
         background-color: #598392;
       }
     }
+
+    @media screen and (min-width: $breakpoint-min-width-laptop) {
+      &__item {
+        font-size: 2em;
+      }
+    }
+
   }
 }

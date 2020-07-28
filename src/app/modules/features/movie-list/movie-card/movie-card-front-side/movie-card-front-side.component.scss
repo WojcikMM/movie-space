@@ -1,4 +1,4 @@
-@import '../movie-card.component';
+@import '../../styles/mixins';
 
 .movie-card-front-side {
   @include movie-card-side-mixin;

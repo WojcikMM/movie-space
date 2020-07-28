@@ -1,0 +1,8 @@
+@mixin movie-card-side-mixin {
+  backface-visibility: hidden;
+  border-radius: 2em;
+  height: 25em;
+  left: 0;
+  top: 0;
+  width: 100%;
+}

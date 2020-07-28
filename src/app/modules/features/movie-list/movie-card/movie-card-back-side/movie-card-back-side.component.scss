@@ -1,5 +1,5 @@
 @import '../../../../../../sass/variables';
-@import '../movie-card.component';
+@import '../../styles/mixins';
 
 .movie-card-back-side {
   @include movie-card-side-mixin;
@@ -8,7 +8,7 @@
   font-style: oblique;
   position: absolute;
   text-align: center;
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateZ(1px);
   vertical-align: middle;
 
   &__header {
@@ -81,7 +81,7 @@
       width: 65%;
 
       &:hover {
-        background-color: $theme-3-color;
+        background-color: $theme-color--active;
         left: -3px;
         top: 3px;
       }

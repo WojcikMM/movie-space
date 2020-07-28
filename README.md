@@ -9,11 +9,12 @@ The one of the main objectives of the project is writing styles with Pure CSS.
 ### Without using any css frameworks.
 
 ## TODO:
-- [ ] Support for mobile on a home screen  
-- [ ] Support for mobile on a detail screen
+- [x] Support for mobile on a home screen  
 - [x] Fix problem with displaying lot of description text
 - [x] Fix problem with formatting of information rectangle in movie card
 - [x] Split source code to modules / packages
 - [x] Add custom library for own lint rules (in separate repo)
+- [x] Fix problem with not hover left side of "Details" button ( styles )
+- [ ] Support for mobile on a detail screen
 - [ ] Create new filtrating panel ( multiple geneses to select )
-- [ ] Fix problem with not hover left side of "Details" button ( styles )
+- [ ] Add the container for search input and results and change width by screen resolution

@@ -1,6 +1,6 @@
 
 $theme-background-color: #598392;
-$theme-3-color: #ffb86f;
+$theme-color--active: #ffb86f;
 $theme-inactive-color: #d8cfaf;
 $theme-black-color: #404040;
 $theme-rating-active-color: #f4442e;
@@ -12,8 +12,9 @@ $button-border-color: #000;
 $button-inactive-color: #ccc;
 
 // responsive screen sizes
-$breakpoint-max-width-mobile: 480px;
-$breakpoint-max-width-tablets: 768px;
-$breakpoint-max-width-small-screen: 1024px;
-$breakpoint-max-width-medium-screen: 1200px;
-$breakpoint-min-width-large-screen: 1201px;
+$breakpoint-min-width-mobile-medium: 321px;
+$breakpoint-min-width-mobile-large: 376px;
+$breakpoint-min-width-tablet: 426px;
+$breakpoint-min-width-laptop: 769px;
+$breakpoint-min-width-laptop-large: 1025px;
+$breakpoint-min-width-screen-xxl: 1441px;

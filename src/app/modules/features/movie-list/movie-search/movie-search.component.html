@@ -3,7 +3,7 @@
          autocomplete="off"
          [formControl]="term"
          placeholder='Type here to search movie'
-         (blur)='endOfSearching()'/>
+         />
 
   <div class="c-movie-search__autocomplete-items-container">
     <div *ngFor='let searchResult of searchResults'

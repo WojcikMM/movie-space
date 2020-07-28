@@ -1,40 +1,36 @@
-//@import '../../../sass/variables';
 @import '../../../../../sass/variables';
-
-@mixin movie-card-side-mixin {
-  backface-visibility: hidden;
-  border-radius: 2em;
-  height: 25em;
-  left: 0;
-  top: 0;
-  width: 100%;
-}
-
-// mobile
-@media screen and (max-width: 480px) {
-
-}
-
-@media screen and (max-width: 768px) {
-
-}
-
-
-// xl
-@media screen and (min-width: 9.063em) {
-  .c-movie-card {
-    .c-movie-card__container {
-      font-size: 2em;
-    }
-  }
-}
 
 .c-movie-card {
   perspective: 1000px;
 
   &__container {
+    font-size: 1em;
     transform-style: preserve-3d;
     transition: .9s;
+  }
+
+  @media screen and (min-width: $breakpoint-min-width-mobile-medium) {
+    &__container {
+      font-size: 1.2em;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-min-width-mobile-large) {
+    &__container {
+      font-size: 1.4em;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-min-width-tablet) {
+    &__container {
+      font-size: 1.5em;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-min-width-screen-xxl) {
+    &__container {
+      font-size: 2em;
+    }
   }
 
   &:hover {
