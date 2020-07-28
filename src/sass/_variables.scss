@@ -1,15 +1,29 @@
 
-$theme-background-color: #598392;
 $theme-color--active: #ffb86f;
 $theme-inactive-color: #d8cfaf;
-$theme-black-color: #404040;
+$theme-color--background: #ededed;
+$theme-color--black: #404040;
+$theme-color--sea-blue: #598392;
+$theme-color--white: #fff;
+$theme-color--gray: #ccc;
+$theme-color--gray-200: #d4d4d4;
+$theme-color--gray-300: #e9e9e9;
+$theme-color--black: #000;
 $theme-rating-active-color: #f4442e;
 $icons-spacing-rating: .3em;
 
 // Buttons
 
-$button-border-color: #000;
-$button-inactive-color: #ccc;
+$button-border-color: $theme-color--black;
+$button-inactive-color: $theme-inactive-color;
+
+// Cards
+
+$card-background--color: $theme-color--sea-blue;
+
+// Loader
+$loader-color: #538392;
+
 
 // responsive screen sizes
 $breakpoint-min-width-mobile-medium: 321px;

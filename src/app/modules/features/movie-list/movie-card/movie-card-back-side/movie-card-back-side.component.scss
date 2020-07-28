@@ -3,7 +3,7 @@
 
 .movie-card-back-side {
   @include movie-card-side-mixin;
-  background-color: $theme-background-color;
+  background-color: $theme-color--sea-blue;
   content: attr(data-value);
   font-style: oblique;
   position: absolute;
@@ -69,7 +69,7 @@
     &__details-button {
       background-color: $theme-inactive-color;
       border-radius: 2.5vw 0;
-      box-shadow: -3px 3px $theme-black-color;
+      box-shadow: -3px 3px $theme-color--black;
       box-sizing: content-box;
       font-size: 2em;
       height: 1.3em;

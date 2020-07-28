@@ -1,7 +1,9 @@
+@import 'src/sass/variables';
+
 .loader {
   animation: load6 1.7s infinite ease, round 1.7s infinite ease;
   border-radius: 50%;
-  color: #538392;
+  color: $loader-color;
   font-size: 90px;
   height: 1em;
   margin: 72px auto;
