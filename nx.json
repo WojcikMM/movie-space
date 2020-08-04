@@ -1,0 +1,60 @@
+{
+  "npmScope": "movie-space",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "webapp": {
+      "tags": [],
+      "implicitDependencies": [
+        "theme"
+      ]
+    },
+    "webapp-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "webapp",
+        "theme"
+      ]
+    },
+    "shared": {
+      "tags": [],
+      "implicitDependencies": [
+        "theme"
+      ]
+    },
+    "features-movie-list": {
+      "tags": [],
+      "implicitDependencies": [
+        "theme"
+      ]
+    },
+    "features-movie-preview": {
+      "tags": [],
+      "implicitDependencies": [
+        "theme"
+      ]
+    },
+    "theme": {
+      "tags": []
+    }
+  }
+}

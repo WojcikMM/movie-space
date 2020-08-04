@@ -1,0 +1,81 @@
+@import 'libs/theme/src/index';
+
+.c-movie-search {
+  margin: 2em 0 2.5em;
+  position: relative;
+
+  &__input {
+    background-color: $theme-color--white;
+    background-image: url('/assets/search-icon.svg');
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+    background-size: 1em;
+    border: 2px solid $theme-color--gray;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    font-size: 1.1em;
+    margin: 0 auto;
+    padding-left: 1.2em;
+    transition: width .4s ease-in-out;
+    width: 14em;
+
+    &:focus {
+      outline-color: $theme-color--active;
+      width: 16em;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-min-width-mobile-medium) {
+    &__input {
+      font-size: 1.4em;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-min-width-tablet) {
+    &__input {
+      font-size: 2.2em;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-min-width-laptop-large) {
+    &__input {
+      font-size: 3.5em;
+    }
+  }
+
+
+  &__autocomplete-items-container {
+    border: 1px solid $theme-color--gray-200;
+    border-bottom: 0;
+    border-radius: 30px;
+    border-top: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    z-index: 99;
+
+    &__item {
+      background-color: $theme-color--gray-300;
+      border-bottom: 1px solid $theme-color--gray-200;
+      cursor: pointer;
+      font-size: 1em;
+      margin: 0 15%;
+      padding: 1%;
+      text-align: center;
+
+      &--active,
+      &:hover {
+        background-color: $theme-color--active;
+      }
+    }
+
+    @media screen and (min-width: $breakpoint-min-width-laptop) {
+      &__item {
+        font-size: 2em;
+      }
+    }
+
+  }
+}

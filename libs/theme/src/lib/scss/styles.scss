@@ -1,0 +1,7 @@
+@import 'variables';
+@import 'mixins';
+@import 'grid';
+
+body {
+  background: $theme-color--background;
+}

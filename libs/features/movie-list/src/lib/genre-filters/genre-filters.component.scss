@@ -1,0 +1,58 @@
+@import 'libs/theme/src/index';
+
+.genres__container {
+
+  &__ordering_switch {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding: 0 1em;
+
+    &__button {
+      background-color: $button-inactive-color;
+      border-radius: 1em;
+
+      box-sizing: border-box;
+      color: $button-border-color;
+      cursor: pointer;
+      display: inline-block;
+      font-family: "Roboto", sans-serif;
+      font-size: .4em;
+      font-weight: 400;
+      margin: 0 .3em .3em 0;
+      padding: .7em 1.7em;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+
+      &:hover {
+        box-shadow: 1px 2px 5px 0 $theme-color--black;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:active {
+        box-shadow: inset 0 0 0 0 $button-inactive-color;
+        outline: none;
+      }
+
+      &:disabled {
+        background-color: $theme-color--active;
+      }
+    }
+
+    @media screen and (min-width: $breakpoint-min-width-tablet) {
+      &__button {
+        font-size: 1.1em;
+      }
+    }
+
+    @media screen and (min-width: $breakpoint-min-width-screen-xxl) {
+      &__button {
+        font-size: 2em;
+      }
+    }
+  }
+}

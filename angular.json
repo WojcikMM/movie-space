@@ -1,34 +1,36 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
   "projects": {
-    "movie-space-app": {
+    "webapp": {
       "projectType": "application",
       "schematics": {
-        "@schematics/angular:component": {
+        "@nrwl/angular:component": {
           "style": "scss"
         }
       },
-      "root": "",
-      "sourceRoot": "src",
-      "prefix": "app",
+      "root": "apps/webapp",
+      "sourceRoot": "apps/webapp/src",
+      "prefix": "movie-space",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/movie-space-app",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "outputPath": "dist/apps/webapp",
+            "index": "apps/webapp/src/index.html",
+            "main": "apps/webapp/src/main.ts",
+            "polyfills": "apps/webapp/src/polyfills.ts",
+            "tsConfig": "apps/webapp/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              {
+                "glob": "**/*",
+                "input": "./libs/theme/src/lib/assets",
+                "output": "/assets/"
+              }
             ],
             "styles": [
-              "src/sass/styles.scss"
+              "apps/webapp/src/styles.scss",
+              "./libs/theme/src/index.scss"
             ],
             "scripts": []
           },
@@ -36,8 +38,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "apps/webapp/src/environments/environment.ts",
+                  "with": "apps/webapp/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -66,73 +68,206 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "movie-space-app:build"
+            "browserTarget": "webapp:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "movie-space-app:build:production"
+              "browserTarget": "webapp:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "movie-space-app:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/sass/styles.scss"
-            ],
-            "scripts": []
+            "browserTarget": "webapp:build"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "apps/webapp/tsconfig.app.json",
+              "apps/webapp/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/webapp/**/*"]
           }
         },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+        "test": {
+          "builder": "@nrwl/jest:jest",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "movie-space-app:serve"
+            "jestConfig": "apps/webapp/jest.config.js",
+            "tsConfig": "apps/webapp/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/webapp/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "webapp-e2e": {
+      "root": "apps/webapp-e2e",
+      "sourceRoot": "apps/webapp-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/webapp-e2e/cypress.json",
+            "tsConfig": "apps/webapp-e2e/tsconfig.e2e.json",
+            "devServerTarget": "webapp:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "movie-space-app:serve:production"
+              "devServerTarget": "webapp:serve:production"
             }
           }
         },
-        "deploy": {
-          "builder": "angular-cli-ghpages:deploy",
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-          "baseHref":"/angular-family-movies/"
+            "tsConfig": ["apps/webapp-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/webapp-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "shared": {
+      "projectType": "library",
+      "root": "libs/shared",
+      "sourceRoot": "libs/shared/src",
+      "prefix": "movie-space",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/tsconfig.lib.json",
+              "libs/shared/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/jest.config.js",
+            "tsConfig": "libs/shared/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "features-movie-list": {
+      "projectType": "library",
+      "root": "libs/features/movie-list",
+      "sourceRoot": "libs/features/movie-list/src",
+      "prefix": "movie-space",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/features/movie-list/tsconfig.lib.json",
+              "libs/features/movie-list/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/features/movie-list/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/features/movie-list/jest.config.js",
+            "tsConfig": "libs/features/movie-list/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/features/movie-list/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "features-movie-preview": {
+      "projectType": "library",
+      "root": "libs/features/movie-preview",
+      "sourceRoot": "libs/features/movie-preview/src",
+      "prefix": "movie-space",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/features/movie-preview/tsconfig.lib.json",
+              "libs/features/movie-preview/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/features/movie-preview/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/features/movie-preview/jest.config.js",
+            "tsConfig": "libs/features/movie-preview/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/features/movie-preview/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "theme": {
+      "root": "libs/theme",
+      "sourceRoot": "libs/theme/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/theme/tsconfig.lib.json",
+              "libs/theme/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/theme/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/theme/jest.config.js",
+            "tsConfig": "libs/theme/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
     }
   },
-  "defaultProject": "movie-space-app",
   "cli": {
+    "defaultCollection": "@nrwl/angular",
     "analytics": false
-  }
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "webapp"
 }

@@ -1,0 +1,25 @@
+<!--//movie-card-back-side-->
+<div class="movie-card-back-side">
+  <div class="movie-card-back-side__header">
+    {{movie.title}}
+  </div>
+  <ms-list-movie-info-grid [movie]="movie"
+                       [selectedGenreIds]="[selectedGenreId]">
+  </ms-list-movie-info-grid>
+  <p class="movie-card-back-side__description">
+    {{movie.overview}}
+  </p>
+
+  <div class="movie-card-back-side__footer">
+    <div class="movie-card-back-side__footer__rating-bar">
+      <div class="movie-card-back-side__footer__rating-bar__value-bar"
+           [style.width.%]="movie.vote_average * 10">
+      </div>
+    </div>
+
+    <button class="movie-card-back-side__footer__details-button"
+            routerLink="/details/{{movie.id}}">
+      Details
+    </button>
+  </div>
+</div>

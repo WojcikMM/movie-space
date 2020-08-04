@@ -1,0 +1,46 @@
+@import 'libs/theme/src/index';
+
+.c-movie-card {
+  perspective: 1000px;
+
+  &__container {
+    font-size: 1em;
+    transform-style: preserve-3d;
+    transition: .9s;
+  }
+
+  @media screen and (min-width: $breakpoint-min-width-mobile-medium) {
+    &__container {
+      font-size: 1.2em;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-min-width-mobile-large) {
+    &__container {
+      font-size: 1.4em;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-min-width-tablet) {
+    &__container {
+      font-size: 1.5em;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-min-width-screen-xxl) {
+    &__container {
+      font-size: 2em;
+    }
+  }
+
+  &:hover {
+    .c-movie-card__container {
+      transform: rotateY(180deg);
+    }
+
+    ::ng-deep .movie-card-back-side__footer__rating-bar__value-bar::before {
+      opacity: 1;
+      width: 100%;
+    }
+  }
+}
