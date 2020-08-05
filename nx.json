@@ -31,8 +31,7 @@
     "webapp-e2e": {
       "tags": [],
       "implicitDependencies": [
-        "webapp",
-        "theme"
+        "webapp"
       ]
     },
     "shared": {

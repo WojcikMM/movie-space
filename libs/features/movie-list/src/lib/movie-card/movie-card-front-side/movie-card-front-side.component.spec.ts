@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieCardFrontSideComponent } from './movie-card-front-side.component';
 import { By } from '@angular/platform-browser';
-import { environment } from '../../../../../../environments/environment';
+import { GLOBAL_CONST } from '@movie-space/shared';
 
 describe('MovieCardFrontSideComponent', () => {
   let component: MovieCardFrontSideComponent;
@@ -35,7 +35,7 @@ describe('MovieCardFrontSideComponent', () => {
 
     const imgElement = getImgElement();
     expect(imgElement.src).toBeDefined();
-    expect(imgElement.src).toContain(environment.posterUrlPlaceholderUrl);
+    expect(imgElement.src).toContain(GLOBAL_CONST.MOVIE_DB.POSTER_PLACEHOLDER_SRC);
 
   });
 
@@ -46,7 +46,7 @@ describe('MovieCardFrontSideComponent', () => {
 
     const imgElement = getImgElement();
 
-    expect(imgElement.src).toEqual(`${environment.posterUrlPrefix}${posterUrl}`);
+    expect(imgElement.src).toEqual(`${GLOBAL_CONST.MOVIE_DB.POSTER_URL_PREFIX}${posterUrl}`);
   });
 
   function getImgElement(): HTMLImageElement {

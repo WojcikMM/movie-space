@@ -2,7 +2,7 @@ import {
   Component,
   Input
 } from '@angular/core';
-import { environment } from '../../../../../../../apps/webapp/src/environments/environment';
+import { GLOBAL_CONST } from '@movie-space/shared';
 
 @Component({
   selector: 'ms-list-movie-card-front-side',
@@ -13,7 +13,7 @@ export class MovieCardFrontSideComponent {
 
   @Input() movieTitle: string;
   @Input() posterUrl: string;
-  posterPrefix = environment.posterUrlPrefix;
-  posterPlaceholderUrl = environment.posterUrlPlaceholderUrl;
+  posterPrefix = GLOBAL_CONST.MOVIE_DB.POSTER_URL_PREFIX;
+  posterPlaceholderUrl = GLOBAL_CONST.MOVIE_DB.POSTER_PLACEHOLDER_SRC;
 
 }
