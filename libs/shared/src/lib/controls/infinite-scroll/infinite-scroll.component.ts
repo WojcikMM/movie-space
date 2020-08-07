@@ -10,9 +10,8 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'ms-shared-infinite-scroll',
-  templateUrl: './infinite-scroll.component.html',
-  styleUrls: ['./infinite-scroll.component.scss']
+  selector: 'shared-infinite-scroll',
+  templateUrl: './infinite-scroll.component.html'
 })
 export class InfiniteScrollComponent implements OnInit, OnDestroy {
   @Input() public options: IntersectionObserverInit;
