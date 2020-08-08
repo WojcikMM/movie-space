@@ -12,6 +12,7 @@ export interface State extends EntityState<MoviesEntity> {
   selectedMovieType: MovieType;
   loading: boolean; // has the Movies list been loaded
   error?: string | null; // last known error (if any)
+  currentPage?: number;
 }
 
 export interface MoviesPartialState {
@@ -42,7 +43,7 @@ const moviesReducer = createReducer(
   on(MoviesActions.loadMoviesFailure, (state, { error }) => ({
     ...state,
     loading: false,
-    error
+    error: error as string
   }))
 );
 

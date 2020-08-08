@@ -1,61 +1,91 @@
-import { MoviesEntity } from './movies.models';
 import { moviesAdapter, initialState } from './movies.reducer';
 import * as MoviesSelectors from './movies.selectors';
 
 describe('Movies Selectors', () => {
-  const ERROR_MSG = 'No Error Available';
-  const getMoviesId = (it) => it['id'];
-  const createMoviesEntity = (id: string, name = '') =>
-    ({
-
-    } as MoviesEntity);
-
   let state;
 
   beforeEach(() => {
     state = {
-      movies: moviesAdapter.addAll(
+      movies: moviesAdapter.setAll(
         [
-          createMoviesEntity('PRODUCT-AAA'),
-          createMoviesEntity('PRODUCT-BBB'),
-          createMoviesEntity('PRODUCT-CCC'),
+          {
+            id: 1,
+            title: 'sample title',
+            overview: 'sample overview',
+            posterPath: 'sample/poster/path',
+            votesAverage: 10,
+            votesCount: 100,
+            genresIds: [],
+            score: 75,
+            releaseDate: new Date(2020, 1, 2)
+          },
+          {
+            id: 2,
+            title: 'sample title 2',
+            overview: 'sample overview 2',
+            posterPath: 'sample/poster/path/2',
+            votesAverage: 8,
+            votesCount: 16,
+            genresIds: [],
+            score: 70,
+            releaseDate: new Date(2020, 2, 5)
+          },
+          {
+            id: 1,
+            title: 'sample title',
+            overview: 'sample overview',
+            posterPath: 'sample/poster/path',
+            votesAverage: 3,
+            votesCount: 255,
+            genresIds: [],
+            score: 73,
+            releaseDate: new Date(2020, 8, 5)
+          }
+
         ],
         {
           ...initialState,
-          selectedId: 'PRODUCT-BBB',
-          error: ERROR_MSG,
-          loaded: true,
+          loaded: true
         }
-      ),
+      )
     };
   });
 
-  describe('Movies Selectors', () => {
-    it('getAllMovies() should return the list of Movies', () => {
-      const results = MoviesSelectors.getAllMovies(state);
-      const selId = getMoviesId(results[1]);
+  describe('GIVEN getLoadingState', () => {
 
-      expect(results.length).toBe(3);
-      expect(selId).toBe('PRODUCT-BBB');
+    it('WHEN loading state is true THEN should return true value', () => {
+      const results = MoviesSelectors.getLoadingState({
+        movies: {
+          ...state.movies,
+          loading: true
+        }
+      });
+
+      expect(results).toBe(true);
     });
 
-    it('getSelected() should return the selected Entity', () => {
-      const result = MoviesSelectors.getSelected(state);
-      const selId = getMoviesId(result);
+    it('WHEN loading state is true THEN should return true value', () => {
+      const results = MoviesSelectors.getLoadingState({
+        movies: {
+          ...state.movies,
+          loading: false
+        }
+      });
 
-      expect(selId).toBe('PRODUCT-BBB');
+      expect(results).toBe(false);
     });
 
-    it("getMoviesLoaded() should return the current 'loaded' status", () => {
-      const result = MoviesSelectors.getMoviesLoaded(state);
+  });
 
-      expect(result).toBe(true);
-    });
+  describe('GIVEN getMoviesError', () => {
+  });
 
-    it("getMoviesError() should return the current 'error' state", () => {
-      const result = MoviesSelectors.getMoviesError(state);
+  describe('GIVEN getCurrentPageNumber', () => {
+  });
 
-      expect(result).toBe(ERROR_MSG);
-    });
+  describe('GIVEN getAllMovies', () => {
+  });
+
+  describe('GIVEN getSelectedMovieType', () => {
   });
 });

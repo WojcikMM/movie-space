@@ -28,7 +28,6 @@ export class MovieListComponent {
   }
 
   onScrolledToBottom() {
-    // this._homeService.nextPage();
-    // TODO: Dispatch action - Load next page & add state as loading
+    this._moviesFacade.loadNextPage();
   }
 }

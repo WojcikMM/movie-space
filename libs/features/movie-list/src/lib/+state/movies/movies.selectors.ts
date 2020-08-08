@@ -15,6 +15,8 @@ export const getLoadingState = createSelector(getMoviesState,  (state: State) =>
 
 export const getMoviesError = createSelector(getMoviesState,(state: State) => state.error);
 
+export const getCurrentPageNumber = createSelector(getMoviesState, (state: State) => state.currentPage);
+
 export const getAllMovies = createSelector(getMoviesState, (state: State) =>  selectAll(state));
 
 export const getSelectedMovieType = createSelector(getMoviesState, (state: State) => state.selectedMovieType);
