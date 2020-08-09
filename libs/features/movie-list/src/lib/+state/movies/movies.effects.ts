@@ -1,55 +1,51 @@
+import { Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
-import { fetch } from '@nrwl/angular';
 
-import * as MoviesActions from './movies.actions';
+import { of } from 'rxjs';
+import { map, withLatestFrom, mergeMap, catchError } from 'rxjs/operators';
+
 import { MovieDto, MoviesClientService } from '@movie-space/shared';
-import { map } from 'rxjs/operators';
+
 import { MoviesEntity } from './movies.models';
-import { State } from './movies.reducer';
+import * as MoviesActions from './movies.actions';
+import * as MoviesSelectors from './movies.selectors';
 
 @Injectable()
 export class MoviesEffects {
 
   constructor(private readonly _actions$: Actions,
+              private readonly _store$: Store,
               private readonly _moviesClientService: MoviesClientService) {
   }
 
   loadMovies$ = createEffect(() =>
     this._actions$.pipe(
       ofType(MoviesActions.loadMovies),
-      fetch({
-        run: (action) => {
-          return this._moviesClientService.getMovieByType(action.movieType)
-            .pipe(
-              map(movies => this._mapMoviesDtoToEntity(movies)),
-              map(movies => MoviesActions.loadMoviesSuccess({ movies }))
-            );
-          // Your custom service 'load' logic goes here. For now just return a success action...
-        },
-
-        onError: (action, error) => {
-          return MoviesActions.loadMoviesFailure({ error });
-        }
-      })
+      mergeMap(action => this._moviesClientService.getMovieByType(action.movieType)
+        .pipe(
+          map(movies => this._mapMoviesDtoToEntity(movies)),
+          map(movies => MoviesActions.loadMoviesSuccess({ movies })),
+          catchError(error => of(MoviesActions.loadMoviesFailure({ error }))
+          ))
+      )
     )
   );
 
   loadNextPage$ = createEffect(() =>
     this._actions$.pipe(
       ofType(MoviesActions.loadNextPage),
-      fetch({
-        run: (action, state: State) => {
-          return this._moviesClientService.getMovieByType(state.selectedMovieType, state.currentPage + 1 )
-            .pipe(
-              map(movies => this._mapMoviesDtoToEntity(movies)),
-              map(movies => MoviesActions.loadNextPageSuccess({ movies }))
-            );
-        },
-        onError(action, error: any): any {
-          return MoviesActions.loadNextPageFailure({ error });
-        }
-      })
+      withLatestFrom(this._store$.select(MoviesSelectors.getMoviesState)),
+      mergeMap(([_, state]) =>
+        this._moviesClientService.getMovieByType(state.selectedMovieType, state.currentPage + 1)
+          .pipe(
+            map(movies => this._mapMoviesDtoToEntity(movies)),
+            map(movies => MoviesActions.loadNextPageSuccess({ movies })),
+            catchError((error => {
+              return of(MoviesActions.loadNextPageFailure({ error }));
+            }))
+          )
+      )
     ));
 
 

@@ -24,27 +24,41 @@ export const moviesAdapter: EntityAdapter<MoviesEntity> = createEntityAdapter<Mo
 export const initialState: State = moviesAdapter.getInitialState({
   // set initial required properties
   loading: false,
+  currentPage: null,
   selectedMovieType: MovieType.NOW_PLAYING
 });
 
 const moviesReducer = createReducer(
   initialState,
-  on(MoviesActions.loadMovies, (state) => ({
-    ...state,
-    loaded: true,
-    error: null
-  })),
+  on(MoviesActions.loadMovies,
+    MoviesActions.loadNextPage,
+    (state) => ({
+      ...state,
+      loading: true,
+      error: null
+    })),
   on(MoviesActions.loadMoviesSuccess, (state, { movies }) =>
     moviesAdapter.setAll(movies, {
       ...state,
+      currentPage: 1,
       loading: false
     })
   ),
-  on(MoviesActions.loadMoviesFailure, (state, { error }) => ({
-    ...state,
-    loading: false,
-    error: error as string
-  }))
+  on(MoviesActions.loadNextPageSuccess, ((state, action) =>
+      moviesAdapter.addMany(action.movies, {
+        ...state,
+        currentPage: state.currentPage +1,
+        loading: false
+      })
+  ))
+  ,
+  on(MoviesActions.loadMoviesFailure,
+    MoviesActions.loadNextPageFailure,
+    (state, { error }) => ({
+      ...state,
+      loading: false,
+      error: error as string
+    }))
 );
 
 export function reducer(state: State | undefined, action: Action) {

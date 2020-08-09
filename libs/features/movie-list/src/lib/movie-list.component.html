@@ -2,13 +2,13 @@
 <ms-list-movie-search></ms-list-movie-search>
 
 <ms-list-genre-filters [currentMovieType]="selectedMovieType$ | async"
-                   (movieTypeChangedEvent)="setMovieType($event)">
+                       (movieTypeChangedEvent)="setMovieType($event)">
 </ms-list-genre-filters>
 
 
 <shared-loader *ngIf="isLoading$ | async"></shared-loader>
 
-<shared-infinite-scroll (scrolledToBottomEvent)="onScrolledToBottom()">
+<shared-infinite-scroll *ngIf="(loadedMovies$| async).length" (scrolledToBottomEvent)="onScrolledToBottom()">
   <div class="home__movie-container">
     <div *ngFor="let movie of loadedMovies$ | async"
          class="home__movie-container__item">

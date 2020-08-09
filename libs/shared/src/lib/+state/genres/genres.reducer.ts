@@ -16,9 +16,7 @@ export interface GenresPartialState {
   readonly [GENRES_FEATURE_KEY]: State;
 }
 
-export const genresAdapter: EntityAdapter<GenresEntity> = createEntityAdapter<
-  GenresEntity
->();
+export const genresAdapter: EntityAdapter<GenresEntity> = createEntityAdapter<GenresEntity>();
 
 export const initialState: State = genresAdapter.getInitialState({
   // set initial required properties

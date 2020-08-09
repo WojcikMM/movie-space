@@ -78,6 +78,18 @@ describe('Movies Selectors', () => {
   });
 
   describe('GIVEN getMoviesError', () => {
+
+    it('WHEN state contains movies THEN should return movies array', () => {
+      const results = MoviesSelectors.getAllMovies({
+        movies: {
+          ...state.movies
+          }
+        });
+
+      expect(results).toEqual(Object.values(state.movies.entities));
+
+    });
+
   });
 
   describe('GIVEN getCurrentPageNumber', () => {
