@@ -1,5 +1,9 @@
-import { moviesAdapter, initialState } from './movies.reducer';
+import {
+  initialState,
+  moviesAdapter
+} from './movies.reducer';
 import * as MoviesSelectors from './movies.selectors';
+import { MovieType } from '@movie-space/shared';
 
 describe('Movies Selectors', () => {
   let state;
@@ -83,8 +87,8 @@ describe('Movies Selectors', () => {
       const results = MoviesSelectors.getAllMovies({
         movies: {
           ...state.movies
-          }
-        });
+        }
+      });
 
       expect(results).toEqual(Object.values(state.movies.entities));
 
@@ -93,11 +97,110 @@ describe('Movies Selectors', () => {
   });
 
   describe('GIVEN getCurrentPageNumber', () => {
+
+    it('WHEN state contains page number THEN should return it', () => {
+      const currentPage = 4;
+      const results = MoviesSelectors.getCurrentPageNumber({
+        movies: {
+          ...state.movies,
+          currentPage
+        }
+      });
+
+      expect(results).toBe(currentPage);
+    });
+
+    it('WHEN state not contain page number then should return null or undefined', () => {
+      const currentPage = null;
+      const results = MoviesSelectors.getCurrentPageNumber({
+        movies: {
+          ...state.movies,
+          currentPage
+        }
+      });
+
+      expect(results).toBe(currentPage);
+    });
   });
 
   describe('GIVEN getAllMovies', () => {
+    it('WHEN store has movies THEN should return all ones', () => {
+      const result = MoviesSelectors.getAllMovies({
+        movies: {
+          ...state.movies
+        }
+      });
+
+      expect(result).toEqual(Object.values(state.movies.entities));
+    });
+
+    it('WHEN store has no movies THEN should return empty array', () => {
+      const result = MoviesSelectors.getAllMovies({
+        movies: moviesAdapter.setAll([], {
+          ...state.movies
+        })
+      });
+
+      expect(result).toEqual([]);
+    });
   });
 
   describe('GIVEN getSelectedMovieType', () => {
+
+    it('WHEN initial state THEN MovieType.NOW_PLAYING should be returned', () => {
+      const result = MoviesSelectors.getSelectedMovieType({
+        movies: {
+          ...initialState
+        }
+      });
+
+      expect(result).toBe(MovieType.NOW_PLAYING);
+    });
+
+
+    it('WHEN MovieType.POPULAR is selected THEN should return one', () => {
+      const result = MoviesSelectors.getSelectedMovieType({
+        movies: {
+          ...state.movies,
+          selectedMovieType: MovieType.POPULAR
+        }
+      });
+
+      expect(result).toBe(MovieType.POPULAR);
+    });
+
+    it('WHEN MovieType.NOW_PLAYING is selected THEN should return one', () => {
+      const result = MoviesSelectors.getSelectedMovieType({
+        movies: {
+          ...state.movies,
+          selectedMovieType: MovieType.NOW_PLAYING
+        }
+      });
+
+      expect(result).toBe(MovieType.NOW_PLAYING);
+    });
+
+    it('WHEN MovieType.TOP_RATED is selected THEN should return one', () =>{
+      const result = MoviesSelectors.getSelectedMovieType({
+        movies: {
+          ...state.movies,
+          selectedMovieType: MovieType.TOP_RATED
+        }
+      });
+
+      expect(result).toBe(MovieType.TOP_RATED);
+    })
+
+    it('WHEN MovieType.UPCOMING is selected THEN should return one', () =>{
+      const result = MoviesSelectors.getSelectedMovieType({
+        movies: {
+          ...state.movies,
+          selectedMovieType: MovieType.UPCOMING
+        }
+      });
+
+      expect(result).toBe(MovieType.UPCOMING);
+    })
+
   });
 });

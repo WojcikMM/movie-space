@@ -8,7 +8,6 @@ import { MovieType } from '@movie-space/shared';
 export const MOVIES_FEATURE_KEY = 'movies';
 
 export interface State extends EntityState<MoviesEntity> {
-  selectedId?: string | number; // which Movies record has been selected
   selectedMovieType: MovieType;
   loading: boolean; // has the Movies list been loaded
   error?: string | null; // last known error (if any)
@@ -31,12 +30,18 @@ export const initialState: State = moviesAdapter.getInitialState({
 const moviesReducer = createReducer(
   initialState,
   on(MoviesActions.loadMovies,
-    MoviesActions.loadNextPage,
-    (state) => ({
+    (state) => moviesAdapter.removeAll({
       ...state,
       loading: true,
       error: null
-    })),
+    })
+  ),
+  on(MoviesActions.loadNextPage, (state) => ({
+      ...state,
+      loading: true,
+      error: null
+    })
+  ),
   on(MoviesActions.loadMoviesSuccess, (state, { movies }) =>
     moviesAdapter.setAll(movies, {
       ...state,
@@ -45,20 +50,21 @@ const moviesReducer = createReducer(
     })
   ),
   on(MoviesActions.loadNextPageSuccess, ((state, action) =>
-      moviesAdapter.addMany(action.movies, {
-        ...state,
-        currentPage: state.currentPage +1,
-        loading: false
-      })
-  ))
-  ,
+        moviesAdapter.addMany(action.movies, {
+          ...state,
+          currentPage: state.currentPage + 1,
+          loading: false
+        })
+    )
+  ),
   on(MoviesActions.loadMoviesFailure,
     MoviesActions.loadNextPageFailure,
     (state, { error }) => ({
       ...state,
       loading: false,
       error: error as string
-    }))
+    })
+  )
 );
 
 export function reducer(state: State | undefined, action: Action) {
