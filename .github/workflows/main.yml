@@ -34,4 +34,4 @@ jobs:
         run_lint: 'true'
         base_href: /angular-family-movies/
         deploy_branch: gh-pages
-        build_folder: dist/movie-space-app
+        build_folder: dist/apps/webapp
