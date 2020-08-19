@@ -55,8 +55,8 @@ describe('GenresFacade', () => {
       class RootModule {}
       TestBed.configureTestingModule({ imports: [RootModule] });
 
-      store = TestBed.get(Store);
-      facade = TestBed.get(GenresFacade);
+      store = TestBed.inject(Store);
+      facade = TestBed.inject(GenresFacade);
     });
 
     /**

@@ -15,7 +15,7 @@ describe('Genres Selectors', () => {
 
   beforeEach(() => {
     state = {
-      genres: genresAdapter.addAll(
+      genres: genresAdapter.setAll(
         [
           createGenresEntity('PRODUCT-AAA'),
           createGenresEntity('PRODUCT-BBB'),

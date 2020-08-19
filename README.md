@@ -18,3 +18,5 @@ The one of the main objectives of the project is writing styles with Pure CSS.
 - [ ] Support for mobile on a detail screen
 - [ ] Create new filtrating panel ( multiple geneses to select )
 - [ ] Add the container for search input and results and change width by screen resolution
+- [ ] Extract store types to `models` directory because of make components unrelated from @ngrx library
+- [ ] Add support for container deployment

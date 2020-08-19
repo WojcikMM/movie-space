@@ -1,6 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieCardBackSideComponent } from './movie-card-back-side.component';
+import { Component, Input } from '@angular/core';
+import { MoviesEntity } from '../../+state/movies/movies.models';
+import { RouterTestingModule } from '@angular/router/testing';
+
+@Component({
+  template: '',
+  selector: 'ms-list-movie-info-grid'
+})
+class MovieInfoGridStubComponent {
+  @Input() movie: MoviesEntity;
+}
+
 
 describe('MovieCardBackSizeComponent', () => {
   let component: MovieCardBackSideComponent;
@@ -8,9 +20,10 @@ describe('MovieCardBackSizeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MovieCardBackSideComponent ]
+      declarations: [MovieCardBackSideComponent, MovieInfoGridStubComponent],
+      imports: [RouterTestingModule.withRoutes([])]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

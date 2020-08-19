@@ -1,24 +1,24 @@
 <!--//movie-card-back-side-->
 <div class="movie-card-back-side">
   <div class="movie-card-back-side__header">
-    {{movie.title}}
+    {{movie?.title}}
   </div>
   <ms-list-movie-info-grid [movie]="movie">
   </ms-list-movie-info-grid>
 
   <p class="movie-card-back-side__description">
-    {{movie.overview}}
+    {{movie?.overview}}
   </p>
 
   <div class="movie-card-back-side__footer">
     <div class="movie-card-back-side__footer__rating-bar">
       <div class="movie-card-back-side__footer__rating-bar__value-bar"
-           [style.width.%]="movie.score">
+           [style.width.%]="movie?.score">
       </div>
     </div>
 
     <button class="movie-card-back-side__footer__details-button"
-            routerLink="/details/{{movie.id}}">
+            routerLink="/details/{{movie?.id}}">
       Details
     </button>
   </div>

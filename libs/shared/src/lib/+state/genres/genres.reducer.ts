@@ -31,7 +31,7 @@ const genresReducer = createReducer(
     error: null,
   })),
   on(GenresActions.loadGenresSuccess, (state, { genres }) =>
-    genresAdapter.addAll(genres, { ...state, loaded: true })
+    genresAdapter.setAll(genres, { ...state, loaded: true })
   ),
   on(GenresActions.loadGenresFailure, (state, { error }) => ({
     ...state,

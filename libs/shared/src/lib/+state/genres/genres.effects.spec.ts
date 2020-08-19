@@ -26,7 +26,7 @@ describe('GenresEffects', () => {
       ],
     });
 
-    effects = TestBed.get(GenresEffects);
+    effects = TestBed.inject(GenresEffects);
   });
 
   describe('loadGenres$', () => {
