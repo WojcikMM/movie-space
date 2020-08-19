@@ -6,17 +6,18 @@ import { MovieType } from './movie-type.enum';
 import { map } from 'rxjs/operators';
 import { MovieApiResultDto } from './movie-api-result.dto';
 import { MovieDetailsDto } from './movie-details.dto';
-import { environment } from '../../../../../../../apps/webapp/src/environments/environment';
+import { GLOBAL_CONST } from '../../../global.const';
 
 
 @Injectable()
 export class MoviesClientService {
 
+  private readonly _urlPrefix = GLOBAL_CONST.MOVIE_DB.URL;
   constructor(private readonly _httpClient: HttpClient) {
   }
 
   public searchMovie(query: string, page?: number): Observable<MovieDto[]> {
-    return this._httpClient.get<MovieApiResultDto>(`${environment.movieDbUrl}/search/movie`, {
+    return this._httpClient.get<MovieApiResultDto>(`${this._urlPrefix}/search/movie`, {
       params: {
         query,
         page: page?.toString()
@@ -42,7 +43,7 @@ export class MoviesClientService {
   }
 
   public getMovieById(movieId: number): Observable<MovieDetailsDto> {
-    return this._httpClient.get<MovieDetailsDto>(`${environment.movieDbUrl}/movie/${movieId}`, {
+    return this._httpClient.get<MovieDetailsDto>(`${this._urlPrefix}/movie/${movieId}`, {
       params: {
         append_to_response: 'credits'
       }
@@ -50,7 +51,7 @@ export class MoviesClientService {
   }
 
   private _getMovies(urlSuffix: string, page?: number): Observable<MovieDto[]> {
-    return this._httpClient.get<MovieApiResultDto>(`${environment.movieDbUrl}/movie/${urlSuffix}`, {
+    return this._httpClient.get<MovieApiResultDto>(`${this._urlPrefix}/movie/${urlSuffix}`, {
       params: {
         page: page?.toString()
       }

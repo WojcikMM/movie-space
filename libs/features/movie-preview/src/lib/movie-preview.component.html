@@ -1,4 +1,4 @@
-<ms-shared-header></ms-shared-header>
+<shared-header></shared-header>
 <div *ngIf="movieDetails !== undefined; else loader" class="movie-details-container">
   <div class="main-info-grid">
     <h1>{{movieDetails.title}}</h1>
@@ -46,7 +46,7 @@
 
 </div>
 <ng-template #loader>
-  <ms-shared-loader></ms-shared-loader>
+  <shared-loader></shared-loader>
 </ng-template>
 
 <ng-template #notVotedLine>

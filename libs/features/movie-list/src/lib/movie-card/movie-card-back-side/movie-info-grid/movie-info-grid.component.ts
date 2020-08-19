@@ -2,7 +2,7 @@ import {
   Component,
   Input
 } from '@angular/core';
-import { MovieDto } from '@movie-space/shared';
+import { MoviesEntity } from '@movie-space/features/movie-list';
 
 @Component({
   selector: 'ms-list-movie-info-grid',
@@ -11,6 +11,6 @@ import { MovieDto } from '@movie-space/shared';
 })
 export class MovieInfoGridComponent {
 
-  @Input() movie: MovieDto;
+  @Input() movie: MoviesEntity;
   @Input() selectedGenreIds: number[];
 }

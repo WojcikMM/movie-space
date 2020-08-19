@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
-import {
-  MovieDto,
-  MovieType
-} from '@movie-space/shared';
-import { MovieListService } from './movie-list.service';
-import { tap } from 'rxjs/operators';
+import { MovieType } from '@movie-space/shared';
 import { Observable } from 'rxjs';
+import { MoviesFacade } from './+state/movies/movies.facade';
+import { MoviesEntity } from '..';
 
 @Component({
   selector: 'ms-list-movie-list',
@@ -13,23 +10,24 @@ import { Observable } from 'rxjs';
   styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent {
-  public loading = true;
-  public currentMovieType: MovieType;
-  public movies$: Observable<MovieDto[]> = this._homeService.getMovies$().pipe(tap(() => {
-    this.loading = false;
-  }));
 
-  constructor(private readonly _homeService: MovieListService) {
-    this.currentMovieType = _homeService.movieType;
+  loadedMovies$: Observable<MoviesEntity[]>;
+  selectedMovieType$: Observable<MovieType>;
+  isLoading$: Observable<boolean>;
+
+
+  constructor(private readonly _moviesFacade: MoviesFacade) {
+    this.loadedMovies$ = _moviesFacade.allMovies$;
+    this.selectedMovieType$ =  _moviesFacade.selectedMovieType$
+    this.isLoading$ = _moviesFacade.areMoviesLoading$;
+    _moviesFacade.setMovieType();
   }
 
   setMovieType(movieType: MovieType) {
-    this.loading = true;
-    this._homeService.movieType = this.currentMovieType = movieType;
+    this._moviesFacade.setMovieType(movieType);
   }
 
   onScrolledToBottom() {
-    this.loading = true;
-    this._homeService.nextPage();
+    this._moviesFacade.loadNextPage();
   }
 }

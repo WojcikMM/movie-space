@@ -1,0 +1,45 @@
+name: PR Pipeline
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches:
+      - 'feature/*'
+      - 'bugfix/*'
+    pull-request:
+      branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+
+      - uses: actions/cache@v2.0.0
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
+
+      - name: NPM install dependencies
+        run: npm ci
+
+      - name: Lint affected
+        run: npm run affected:lint -- --base=origin/master
+
+      - name: Test affected
+        run: npm run affected:test -- --base=origin/master
+
+      - name: Build
+        run: npm run affected:build -- --base=origin/master

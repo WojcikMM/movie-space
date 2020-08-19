@@ -2,7 +2,7 @@ import {
   Component,
   Input
 } from '@angular/core';
-import { MovieDto } from '@movie-space/shared';
+import { MoviesEntity } from '@movie-space/features/movie-list';
 
 @Component({
   selector: 'ms-list-movie-card-back-size',
@@ -11,6 +11,5 @@ import { MovieDto } from '@movie-space/shared';
 })
 export class MovieCardBackSideComponent {
 
-  @Input() movie: MovieDto;
-  selectedGenreId: number;
+  @Input() movie: MoviesEntity;
 }
