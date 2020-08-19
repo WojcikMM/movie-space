@@ -84,7 +84,6 @@ describe('Movies Reducer', () => {
 
       const result = reducer(initialState, action);
 
-      expect(Object.keys(result.entities).length).toEqual(sampleEntities.length);
       expect(Object.values(result.entities)).toEqual(sampleEntities);
       expect(result.error).toBeNull();
       expect(result.loading).toBeFalsy();
@@ -135,27 +134,101 @@ describe('Movies Reducer', () => {
   });
 
   // LoadNextPage API actions
-   //TODO: Fill tests
   describe('GIVEN LoadNextPage action', () => {
 
     describe('WHEN valid action without parameters', () => {
+      let result;
+
+      beforeEach(() => {
+        const action = MoviesActions.loadNextPage();
+        result = reducer(initialState, action);
+      });
 
       it('THEN loading state should be enabled', () => {
-
+        expect(result.loading).toBeTruthy();
       });
 
       it('THEN error should be null', () => {
-
+        expect(result.error).toBeNull();
       });
     });
 
     it('WHEN valid action without parameters and any entities defined THEN should be not cleared', () => {
+      const action = MoviesActions.loadNextPage();
+      const result = reducer({
+        ...initialState,
+        entities: sampleDictionary
+      }, action);
+
+      expect(result.entities).toEqual(sampleDictionary);
 
     });
   });
 
-  //TODO: Fill tests
   describe('GIVEN LoadNextPageSuccess action', () => {
+
+    describe('WHEN valid action', () => {
+      let result;
+      let givenResponseEntities: Dictionary<MoviesEntity>;
+      beforeEach(() => {
+
+        givenResponseEntities = {
+          1001: {
+            id: 1001,
+            title: 'Sample title 1001',
+            overview: '-',
+            votesAverage: 3.3,
+            score: 33,
+            votesCount: 100,
+            posterPath: null,
+            releaseDate: new Date(1993, 1, 1),
+            genresIds: []
+          },
+          1002: {
+            id: 1002,
+            title: 'Sample title 1002',
+            overview: '-',
+            votesAverage: 5.1,
+            score: 51,
+            votesCount: 12,
+            posterPath: null,
+            releaseDate: new Date(1977, 3, 6),
+            genresIds: [1, 5, 6]
+          }
+        };
+
+        const action = MoviesActions.loadNextPageSuccess(
+          { movies: Object.values<MoviesEntity>(givenResponseEntities) }
+        );
+
+        result = reducer({
+          ...initialState,
+          entities: {
+            ...initialState.entities,
+            ...sampleDictionary
+          }
+        }, action);
+      });
+
+      it('THEN state should contain extended entities', () => {
+        expect(result.entities).toEqual({
+          ...initialState.entities,
+          ...sampleDictionary,
+          ...givenResponseEntities
+        });
+      });
+
+      it('THEN loading state should be disabled', () => {
+        expect(result.loading).toBeFalsy();
+      });
+
+      it('THEN state error property should be null', () => {
+        expect(result.error).toBeNull();
+      });
+
+
+    });
+
   });
 
   describe('GIVEN LoadNextPageFailure action', () => {
