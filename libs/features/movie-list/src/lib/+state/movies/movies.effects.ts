@@ -39,7 +39,7 @@ export class MoviesEffects {
             map(movies => MoviesActions.loadMoviesSuccess({ movies }))
           ),
         onError: (action, error: any) => {
-          return MoviesActions.loadMoviesFailure({ error });
+          return MoviesActions.loadMoviesFailure({ error: error });
         }
       })
     )

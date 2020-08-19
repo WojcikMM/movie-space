@@ -10,7 +10,7 @@ export const MOVIES_FEATURE_KEY = 'movies';
 export interface State extends EntityState<MoviesEntity> {
   selectedMovieType: MovieType;
   loading: boolean; // has the Movies list been loaded
-  error?: string | null; // last known error (if any)
+  error: string | null; // last known error (if any)
   currentPage?: number;
 }
 
@@ -24,6 +24,7 @@ export const initialState: State = moviesAdapter.getInitialState({
   // set initial required properties
   loading: false,
   currentPage: null,
+  error: null,
   selectedMovieType: MovieType.NOW_PLAYING
 });
 
@@ -59,10 +60,10 @@ const moviesReducer = createReducer(
   ),
   on(MoviesActions.loadMoviesFailure,
     MoviesActions.loadNextPageFailure,
-    (state, { error }) => ({
+    (state, { error}) => ({
       ...state,
       loading: false,
-      error: error as string
+      error:  error?.message || 'Unknown error'
     })
   )
 );

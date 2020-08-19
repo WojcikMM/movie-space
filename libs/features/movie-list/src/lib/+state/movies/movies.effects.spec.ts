@@ -112,7 +112,7 @@ describe('MoviesEffects', () => {
       });
 
       const expected = hot('-a-|', {
-        a: MoviesActions.loadMoviesFailure({ error })
+        a: MoviesActions.loadMoviesFailure({ error: error })
       });
 
       expect(effects.loadMovies$).toBeObservable(expected);
@@ -161,7 +161,7 @@ describe('MoviesEffects', () => {
       });
 
       const expected = hot('-a-|', {
-        a: MoviesActions.loadNextPageFailure({ error })
+        a: MoviesActions.loadNextPageFailure({ error: error })
       });
 
       expect(effects.loadNextPage$).toBeObservable(expected);
