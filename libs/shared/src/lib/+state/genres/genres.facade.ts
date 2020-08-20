@@ -11,7 +11,7 @@ export class GenresFacade {
   allGenres$ = this.store.pipe(select(GenresSelectors.getAllGenres));
   selectedGenres$ = this.store.pipe(select(GenresSelectors.getSelected));
 
-  constructor(private store: Store<fromGenres.GenresPartialState>) {}
+  constructor(private readonly store: Store<fromGenres.GenresPartialState>) {}
 
   dispatch(action: Action) {
     this.store.dispatch(action);

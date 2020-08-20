@@ -7,7 +7,7 @@ import { StoreModule, Store } from '@ngrx/store';
 
 import { NxModule } from '@nrwl/angular';
 
-import { GenresEntity } from './genres.models';
+import { GenreEntity } from './genres.models';
 import { GenresEffects } from './genres.effects';
 import { GenresFacade } from './genres.facade';
 
@@ -29,7 +29,7 @@ describe('GenresFacade', () => {
     ({
       id,
       name: name || `name-${id}`,
-    } as GenresEntity);
+    } as GenreEntity);
 
   beforeEach(() => {});
 

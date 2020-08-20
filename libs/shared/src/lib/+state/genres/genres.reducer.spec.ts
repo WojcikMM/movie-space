@@ -1,4 +1,4 @@
-import { GenresEntity } from './genres.models';
+import { GenreEntity } from './genres.models';
 import * as GenresActions from './genres.actions';
 import { State, initialState, reducer } from './genres.reducer';
 
@@ -7,7 +7,7 @@ describe('Genres Reducer', () => {
     ({
       id,
       name: name || `name-${id}`,
-    } as GenresEntity);
+    } as GenreEntity);
 
   beforeEach(() => {});
 

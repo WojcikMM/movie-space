@@ -25,7 +25,7 @@ import {
   MoviesClientService,
   MovieType
 } from '@movie-space/shared';
-import { MoviesEntity } from '@movie-space/features/movie-list';
+import { MoviesEntity } from '../../models';
 
 describe('MoviesEffects', () => {
   let actions: Observable<any>;
@@ -112,7 +112,7 @@ describe('MoviesEffects', () => {
       });
 
       const expected = hot('-a-|', {
-        a: MoviesActions.loadMoviesFailure({ error: error })
+        a: MoviesActions.loadMoviesFailure({ error })
       });
 
       expect(effects.loadMovies$).toBeObservable(expected);

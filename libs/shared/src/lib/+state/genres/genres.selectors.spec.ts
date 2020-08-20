@@ -1,4 +1,4 @@
-import { GenresEntity } from './genres.models';
+import { GenreEntity } from './genres.models';
 import { genresAdapter, initialState } from './genres.reducer';
 import * as GenresSelectors from './genres.selectors';
 
@@ -9,7 +9,7 @@ describe('Genres Selectors', () => {
     ({
       id,
       name: name || `name-${id}`,
-    } as GenresEntity);
+    } as GenreEntity);
 
   let state;
 
