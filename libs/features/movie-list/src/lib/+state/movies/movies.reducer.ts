@@ -2,7 +2,7 @@ import { createReducer, on, Action } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 import * as MoviesActions from './movies.actions';
-import { MoviesEntity } from './movies.models';
+import { MoviesEntity } from '../../models';
 import { MovieType } from '@movie-space/shared';
 
 export const MOVIES_FEATURE_KEY = 'movies';
@@ -31,8 +31,9 @@ export const initialState: State = moviesAdapter.getInitialState({
 const moviesReducer = createReducer(
   initialState,
   on(MoviesActions.loadMovies,
-    (state) => moviesAdapter.removeAll({
+    (state, {movieType}) => moviesAdapter.removeAll({
       ...state,
+      selectedMovieType: movieType,
       loading: true,
       error: null
     })

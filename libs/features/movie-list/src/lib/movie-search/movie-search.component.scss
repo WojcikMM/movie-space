@@ -6,7 +6,7 @@
 
   &__input {
     background-color: $theme-color--white;
-    background-image: url('assets/search-icon.svg');
+    background-image: url($asset-search-icon);
     background-position: 0 50%;
     background-repeat: no-repeat;
     background-size: 1em;

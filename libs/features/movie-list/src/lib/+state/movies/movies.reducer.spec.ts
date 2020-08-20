@@ -54,6 +54,7 @@ describe('Movies Reducer', () => {
           const result = reducer(initialState, action);
 
           expect(result.entities).toEqual({});
+          expect(result.selectedMovieType).toBe(MovieType[movieType]);
           expect(result.loading).toBeTruthy();
           expect(result.error).toBeNull();
         });

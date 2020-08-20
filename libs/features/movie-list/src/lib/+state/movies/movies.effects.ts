@@ -17,7 +17,7 @@ import {
   MoviesClientService
 } from '@movie-space/shared';
 
-import { MoviesEntity } from './movies.models';
+import { MoviesEntity } from '../../models';
 import * as MoviesActions from './movies.actions';
 import * as MoviesSelectors from './movies.selectors';
 
