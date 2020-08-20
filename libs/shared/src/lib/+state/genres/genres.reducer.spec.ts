@@ -1,9 +1,9 @@
-import { GenreEntity } from './genres.models';
+import { GenreEntity } from '../../models';
 import * as GenresActions from './genres.actions';
 import { State, initialState, reducer } from './genres.reducer';
 
 describe('Genres Reducer', () => {
-  const createGenresEntity = (id: string, name = '') =>
+  const createGenresEntity = (id: number, name = '') =>
     ({
       id,
       name: name || `name-${id}`,
@@ -14,8 +14,8 @@ describe('Genres Reducer', () => {
   describe('valid Genres actions', () => {
     it('loadGenresSuccess should return set the list of known Genres', () => {
       const genres = [
-        createGenresEntity('PRODUCT-AAA'),
-        createGenresEntity('PRODUCT-zzz'),
+        createGenresEntity(1),
+        createGenresEntity(2),
       ];
       const action = GenresActions.loadGenresSuccess({ genres });
 

@@ -7,7 +7,7 @@ import { StoreModule, Store } from '@ngrx/store';
 
 import { NxModule } from '@nrwl/angular';
 
-import { GenreEntity } from './genres.models';
+import { GenreEntity } from '../../models';
 import { GenresEffects } from './genres.effects';
 import { GenresFacade } from './genres.facade';
 
@@ -25,10 +25,10 @@ interface TestSchema {
 describe('GenresFacade', () => {
   let facade: GenresFacade;
   let store: Store<TestSchema>;
-  const createGenresEntity = (id: string, name = '') =>
+  const createGenresEntity = (id: number, name = '') =>
     ({
       id,
-      name: name || `name-${id}`,
+     name
     } as GenreEntity);
 
   beforeEach(() => {});
@@ -97,7 +97,7 @@ describe('GenresFacade', () => {
 
         facade.dispatch(
           GenresActions.loadGenresSuccess({
-            genres: [createGenresEntity('AAA'), createGenresEntity('BBB')],
+            genres: [createGenresEntity(1), createGenresEntity(2)],
           })
         );
 

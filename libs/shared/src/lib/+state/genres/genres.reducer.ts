@@ -2,14 +2,14 @@ import { createReducer, on, Action } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 import * as GenresActions from './genres.actions';
-import { GenreEntity } from './genres.models';
+import { GenreEntity } from '../../models';
 
 export const GENRES_FEATURE_KEY = 'genres';
 
 export interface State extends EntityState<GenreEntity> {
   selectedId?: string | number; // which Genres record has been selected
   loaded: boolean; // has the Genres list been loaded
-  error?: string | null; // last known error (if any)
+  error?: Error; // last known error (if any)
 }
 
 export interface GenresPartialState {

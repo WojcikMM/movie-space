@@ -1,11 +1,11 @@
-import { GenreEntity } from './genres.models';
+import { GenreEntity } from '../../models';
 import { genresAdapter, initialState } from './genres.reducer';
 import * as GenresSelectors from './genres.selectors';
 
 describe('Genres Selectors', () => {
   const ERROR_MSG = 'No Error Available';
   const getGenresId = (it) => it['id'];
-  const createGenresEntity = (id: string, name = '') =>
+  const createGenresEntity = (id: number, name = '') =>
     ({
       id,
       name: name || `name-${id}`,
@@ -17,9 +17,9 @@ describe('Genres Selectors', () => {
     state = {
       genres: genresAdapter.setAll(
         [
-          createGenresEntity('PRODUCT-AAA'),
-          createGenresEntity('PRODUCT-BBB'),
-          createGenresEntity('PRODUCT-CCC'),
+          createGenresEntity(1),
+          createGenresEntity(2),
+          createGenresEntity(3),
         ],
         {
           ...initialState,
