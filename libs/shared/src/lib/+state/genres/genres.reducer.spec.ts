@@ -6,24 +6,45 @@ describe('Genres Reducer', () => {
   const createGenresEntity = (id: number, name = '') =>
     ({
       id,
-      name: name || `name-${id}`,
+      name: name || `name-${id}`
     } as GenreEntity);
 
-  beforeEach(() => {});
+  beforeEach(() => {
+  });
 
-  describe('valid Genres actions', () => {
-    it('loadGenresSuccess should return set the list of known Genres', () => {
-      const genres = [
-        createGenresEntity(1),
-        createGenresEntity(2),
-      ];
-      const action = GenresActions.loadGenresSuccess({ genres });
+  it('WHEN valid loadGenres action THEN state should not contain additional ', () => {
+    const action = GenresActions.loadGenres();
 
-      const result: State = reducer(initialState, action);
+    const result = reducer(initialState, action);
 
-      expect(result.loaded).toBe(true);
-      expect(result.ids.length).toBe(2);
-    });
+    expect(result.error).toBeNull();
+    expect(result.loaded).toBeFalsy();
+    expect(result.entities).toEqual({});
+  });
+
+  it('WHEN valid loadGenresSuccess action THEN state should contain given genres and set loaded state to true', () => {
+    const genres = [
+      createGenresEntity(1),
+      createGenresEntity(2)
+    ];
+    const action = GenresActions.loadGenresSuccess({ genres });
+
+    const result: State = reducer(initialState, action);
+
+    expect(result.loaded).toBe(true);
+    expect(result.ids.length).toBe(2);
+    expect(result.entities).toEqual({ 1: genres[0], 2: genres[1] });
+  });
+
+  it('WHEN valid loadGenresFailure action THEN state should contain initial state with described error', () => {
+    const error = new Error('sample error');
+
+    const action = GenresActions.loadGenresFailure({ error });
+    const result = reducer(initialState, action);
+
+    expect(result.error).toEqual(error);
+    expect(result.loaded).toBeFalsy();
+    expect(result.entities).toEqual({});
   });
 
   describe('unknown action', () => {
