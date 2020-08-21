@@ -14,9 +14,10 @@ import { GenresFacade } from './+state/genres/genres.facade';
     ServicesModule,
     ControlsModule,
     StoreModule.forFeature(fromGenres.GENRES_FEATURE_KEY, fromGenres.reducer),
-    EffectsModule.forFeature([GenresEffects]),
+    EffectsModule.forFeature([GenresEffects])
   ],
   exports: [ControlsModule],
-  providers: [GenresFacade],
+  providers: [GenresFacade]
 })
-export class SharedModule {}
+export class SharedModule {
+}

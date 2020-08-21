@@ -1,7 +1,7 @@
 import * as MoviesActions from './movies.actions';
 import { initialState, reducer, State } from './movies.reducer';
 import { MovieType } from '@movie-space/shared';
-import { MoviesEntity } from '@movie-space/features/movie-list';
+import { MoviesEntity } from '../../models';
 import { Dictionary } from '@ngrx/entity';
 
 describe('Movies Reducer', () => {

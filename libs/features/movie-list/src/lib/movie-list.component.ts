@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MovieType } from '@movie-space/shared';
 import { Observable } from 'rxjs';
 import { MoviesFacade } from './+state/movies/movies.facade';
-import { MoviesEntity } from '..';
+import { MoviesEntity } from './models';
 
 @Component({
   selector: 'ms-list-movie-list',

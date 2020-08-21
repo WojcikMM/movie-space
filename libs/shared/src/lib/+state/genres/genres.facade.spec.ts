@@ -7,7 +7,6 @@ import { StoreModule, Store } from '@ngrx/store';
 
 import { NxModule } from '@nrwl/angular';
 
-import { GenresEntity } from './genres.models';
 import { GenresEffects } from './genres.effects';
 import { GenresFacade } from './genres.facade';
 
@@ -15,44 +14,55 @@ import * as GenresActions from './genres.actions';
 import {
   GENRES_FEATURE_KEY,
   State,
-  reducer,
+  reducer
 } from './genres.reducer';
+import { GenresClientService } from '../../services/clients/genres';
 
 interface TestSchema {
   genres: State;
 }
 
-describe('GenresFacade', () => {
+describe('GIVEN GenresFacade', () => {
   let facade: GenresFacade;
   let store: Store<TestSchema>;
-  const createGenresEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as GenresEntity);
+  let genresClientServiceSpy;
 
-  beforeEach(() => {});
+  beforeEach(() => {
+  });
 
   describe('used in NgModule', () => {
     beforeEach(() => {
+      genresClientServiceSpy = {
+        loadGenres: jest.fn()
+      };
+
       @NgModule({
         imports: [
           StoreModule.forFeature(GENRES_FEATURE_KEY, reducer),
-          EffectsModule.forFeature([GenresEffects]),
+          EffectsModule.forFeature([GenresEffects])
         ],
-        providers: [GenresFacade],
+        providers: [
+          GenresFacade,
+          {
+            provide: GenresClientService,
+            useValue: genresClientServiceSpy
+          }
+        ]
       })
-      class CustomFeatureModule {}
+      class CustomFeatureModule {
+      }
 
       @NgModule({
         imports: [
           NxModule.forRoot(),
           StoreModule.forRoot({}),
           EffectsModule.forRoot([]),
-          CustomFeatureModule,
-        ],
+          CustomFeatureModule
+        ]
       })
-      class RootModule {}
+      class RootModule {
+      }
+
       TestBed.configureTestingModule({ imports: [RootModule] });
 
       store = TestBed.inject(Store);
@@ -64,53 +74,22 @@ describe('GenresFacade', () => {
      */
     it('loadAll() should return empty list with loaded == true', async (done) => {
       try {
-        let list = await readFirst(facade.allGenres$);
-        let isLoaded = await readFirst(facade.loaded$);
+        const list = await readFirst(facade.allGenres$);
 
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(false);
-
-        facade.dispatch(GenresActions.loadGenres());
-
-        list = await readFirst(facade.allGenres$);
-        isLoaded = await readFirst(facade.loaded$);
-
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(true);
-
+        expect(list).toEqual([]);
         done();
       } catch (err) {
         done.fail(err);
       }
     });
 
-    /**
-     * Use `loadGenresSuccess` to manually update list
-     */
-    it('allGenres$ should return the loaded list; and loaded flag == true', async (done) => {
-      try {
-        let list = await readFirst(facade.allGenres$);
-        let isLoaded = await readFirst(facade.loaded$);
+    it('WHEN call loadGenres THEN action loadGenres should be called', () => {
+      spyOn(store, 'dispatch');
+      genresClientServiceSpy.loadGenres.mockReturnValue([]);
+      facade.loadGenres();
 
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(false);
-
-        facade.dispatch(
-          GenresActions.loadGenresSuccess({
-            genres: [createGenresEntity('AAA'), createGenresEntity('BBB')],
-          })
-        );
-
-        list = await readFirst(facade.allGenres$);
-        isLoaded = await readFirst(facade.loaded$);
-
-        expect(list.length).toBe(2);
-        expect(isLoaded).toBe(true);
-
-        done();
-      } catch (err) {
-        done.fail(err);
-      }
+      expect(store.dispatch).toBeCalledWith(GenresActions.loadGenres());
     });
   });
+
 });

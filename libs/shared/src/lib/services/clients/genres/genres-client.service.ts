@@ -9,7 +9,7 @@ export class GenresClientService {
 
   private readonly _prefixUrl = GLOBAL_CONST.MOVIE_DB.URL;
 
-  constructor(private _httpClient: HttpClient) {
+  constructor(private readonly _httpClient: HttpClient) {
   }
 
   getGenresList(): Observable<GenreListDto> {

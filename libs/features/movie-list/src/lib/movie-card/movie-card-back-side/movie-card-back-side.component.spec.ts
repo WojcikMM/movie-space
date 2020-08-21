@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieCardBackSideComponent } from './movie-card-back-side.component';
 import { Component, Input } from '@angular/core';
-import { MoviesEntity } from '../../..';
+import { MoviesEntity } from '../../models'
 import { RouterTestingModule } from '@angular/router/testing';
 
 @Component({

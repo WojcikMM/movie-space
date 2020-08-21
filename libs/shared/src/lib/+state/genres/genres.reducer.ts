@@ -2,25 +2,24 @@ import { createReducer, on, Action } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 import * as GenresActions from './genres.actions';
-import { GenresEntity } from './genres.models';
+import { GenreEntity } from '../../models';
 
 export const GENRES_FEATURE_KEY = 'genres';
 
-export interface State extends EntityState<GenresEntity> {
-  selectedId?: string | number; // which Genres record has been selected
+export interface State extends EntityState<GenreEntity> {
   loaded: boolean; // has the Genres list been loaded
-  error?: string | null; // last known error (if any)
+  error?: Error; // last known error (if any)
 }
 
 export interface GenresPartialState {
   readonly [GENRES_FEATURE_KEY]: State;
 }
 
-export const genresAdapter: EntityAdapter<GenresEntity> = createEntityAdapter<GenresEntity>();
+export const genresAdapter: EntityAdapter<GenreEntity> = createEntityAdapter<GenreEntity>();
 
 export const initialState: State = genresAdapter.getInitialState({
   // set initial required properties
-  loaded: false,
+  loaded: false
 });
 
 const genresReducer = createReducer(
@@ -28,7 +27,7 @@ const genresReducer = createReducer(
   on(GenresActions.loadGenres, (state) => ({
     ...state,
     loaded: false,
-    error: null,
+    error: null
   })),
   on(GenresActions.loadGenresSuccess, (state, { genres }) =>
     genresAdapter.setAll(genres, { ...state, loaded: true })
@@ -36,6 +35,7 @@ const genresReducer = createReducer(
   on(GenresActions.loadGenresFailure, (state, { error }) => ({
     ...state,
     error,
+    loaded: false
   }))
 );
 

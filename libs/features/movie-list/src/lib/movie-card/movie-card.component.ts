@@ -2,7 +2,7 @@ import {
   Input,
   Component
 } from '@angular/core';
-import { MoviesEntity } from '@movie-space/features/movie-list';
+import { MoviesEntity } from '../models';
 
 @Component({
   selector: 'ms-list-movie-card',
