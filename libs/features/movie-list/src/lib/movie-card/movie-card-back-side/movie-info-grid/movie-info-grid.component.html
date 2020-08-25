@@ -18,10 +18,9 @@
     <label class="movie-info-grid__row__label">Genres:</label>
   </div>
   <div class="movie-info-grid__genre-list">
-    <div *ngFor="let genre of movie?.genresIds"
+    <div *ngFor="let genre of selectedGenres$ | async"
          class="movie-info-grid__genre-list__genre">
-      <!-- TODO: Add genres list for each movie by genresIds -->
-      {{genre}}
+      {{genre.name}}
     </div>
   </div>
 </div>

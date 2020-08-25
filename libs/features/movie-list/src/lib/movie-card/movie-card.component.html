@@ -3,7 +3,10 @@
     <ms-list-movie-card-front-side [movieTitle]="movie.title"
                                    [posterUrl]="movie.posterPath">
     </ms-list-movie-card-front-side>
-    <ms-list-movie-card-back-size [movie]="movie">
-    </ms-list-movie-card-back-size>
+    <ms-list-movie-card-back-side [movie]="movie">
+      <ms-list-movie-info-grid [movie]="movie"
+                               [allGenres$]="allGenres$">
+      </ms-list-movie-info-grid>
+    </ms-list-movie-card-back-side>
   </div>
 </div>

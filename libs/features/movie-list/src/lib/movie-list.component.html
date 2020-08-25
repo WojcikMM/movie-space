@@ -12,7 +12,9 @@
   <div class="home__movie-container">
     <div *ngFor="let movie of loadedMovies$ | async"
          class="home__movie-container__item">
-      <ms-list-movie-card [movie]="movie"></ms-list-movie-card>
+      <ms-list-movie-card [movie]="movie"
+                          [allGenres$]="allGenres$">
+      </ms-list-movie-card>
     </div>
   </div>
 </shared-infinite-scroll>

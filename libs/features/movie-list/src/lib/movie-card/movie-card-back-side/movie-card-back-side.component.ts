@@ -5,7 +5,7 @@ import {
 import { MoviesEntity } from '../../models';
 
 @Component({
-  selector: 'ms-list-movie-card-back-size',
+  selector: 'ms-list-movie-card-back-side',
   templateUrl: './movie-card-back-side.component.html',
   styleUrls: ['./movie-card-back-side.component.scss']
 })

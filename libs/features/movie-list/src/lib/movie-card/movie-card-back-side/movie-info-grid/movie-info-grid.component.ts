@@ -3,6 +3,9 @@ import {
   Input
 } from '@angular/core';
 import { MoviesEntity } from '../../../models';
+import { GenreEntity } from '@movie-space/shared';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ms-list-movie-info-grid',
@@ -12,5 +15,13 @@ import { MoviesEntity } from '../../../models';
 export class MovieInfoGridComponent {
 
   @Input() movie: MoviesEntity;
-  @Input() selectedGenreIds: number[];
+
+  @Input()
+  set allGenres$(value$: Observable<GenreEntity[]>) {
+    this.selectedGenres$ = value$.pipe(
+      map(genres => genres.filter(genre => this.movie.genresIds.includes(genre.id)))
+    );
+  }
+
+  selectedGenres$: Observable<GenreEntity[]>;
 }

@@ -3,8 +3,7 @@
   <div class="movie-card-back-side__header">
     {{movie?.title}}
   </div>
-  <ms-list-movie-info-grid [movie]="movie">
-  </ms-list-movie-info-grid>
+  <ng-content></ng-content>
 
   <p class="movie-card-back-side__description">
     {{movie?.overview}}
