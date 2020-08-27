@@ -2,7 +2,7 @@ import {
   Component,
   Input
 } from '@angular/core';
-import { MoviesEntity } from '../../models';
+import { MovieEntity } from '../../models';
 
 @Component({
   selector: 'ms-list-movie-card-back-side',
@@ -11,5 +11,5 @@ import { MoviesEntity } from '../../models';
 })
 export class MovieCardBackSideComponent {
 
-  @Input() movie: MoviesEntity;
+  @Input() movie: MovieEntity;
 }

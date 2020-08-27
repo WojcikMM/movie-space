@@ -17,10 +17,6 @@
   <div class="movie-info-grid__row">
     <label class="movie-info-grid__row__label">Genres:</label>
   </div>
-  <div class="movie-info-grid__genre-list">
-    <div *ngFor="let genre of selectedGenres$ | async"
-         class="movie-info-grid__genre-list__genre">
-      {{genre.name}}
-    </div>
-  </div>
+  <shared-genre-list [genres]="selectedGenres$ | async">
+  </shared-genre-list>
 </div>

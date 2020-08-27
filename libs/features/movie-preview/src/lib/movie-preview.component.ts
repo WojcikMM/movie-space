@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import {
-  CastDto,
   GLOBAL_CONST,
-  MovieDetailsDto,
-  MoviesClientService
+  MovieDetailsDto
 } from '@movie-space/shared';
 import { ActivatedRoute } from '@angular/router';
+import { MOVIE_PREVIEW_CONST } from './movie-preview.const';
 
 @Component({
   selector: 'ms-preview-movie-details',
@@ -15,14 +14,8 @@ import { ActivatedRoute } from '@angular/router';
 export class MoviePreviewComponent {
   movieDetails: MovieDetailsDto;
   posterPrefix: string = GLOBAL_CONST.MOVIE_DB.POSTER_URL_PREFIX;
-  castArray: Array<CastDto>;
 
-  constructor(private readonly _moviesClientService: MoviesClientService,
-              private readonly route: ActivatedRoute) {
-    const movieId = +this.route.snapshot.paramMap.get('id');
-    this._moviesClientService.getMovieById(movieId).subscribe(result => {
-      this.movieDetails = result;
-      this.castArray = result.credits.cast.slice(0, 12);
-    });
+  constructor(route: ActivatedRoute) {
+    this.movieDetails = route.snapshot.data[MOVIE_PREVIEW_CONST.RESOLVER_KEYS.DATA];
   }
 }

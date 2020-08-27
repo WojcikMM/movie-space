@@ -1,0 +1,17 @@
+@import 'libs/theme/src/index';
+
+.shared-genre-list {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &__item {
+    background-color: $theme-color--active;
+    border-radius: .5em;
+    box-shadow: -4px 4px 0 $theme-color--black;
+    font-size: smaller;
+    margin: .2em;
+    padding: 5px;
+  }
+}

@@ -17,7 +17,7 @@ import {
   MoviesClientService
 } from '@movie-space/shared';
 
-import { MoviesEntity } from '../../models';
+import { MovieEntity } from '../../models';
 import * as MoviesActions from './movies.actions';
 import * as MoviesSelectors from './movies.selectors';
 
@@ -63,7 +63,7 @@ export class MoviesEffects {
       )
     ));
 
-  private _mapMoviesDtoToEntity(movies: MovieDto[]): MoviesEntity[] {
+  private _mapMoviesDtoToEntity(movies: MovieDto[]): MovieEntity[] {
     return movies.map((movie: MovieDto) => ({
       id: movie.id,
       title: movie.title,
@@ -74,6 +74,6 @@ export class MoviesEffects {
       posterPath: movie.poster_path,
       releaseDate: movie.release_date,
       score: movie.vote_average * 10
-    } as MoviesEntity));
+    } as MovieEntity));
   }
 }

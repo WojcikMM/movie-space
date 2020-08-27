@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MoviePreviewComponent } from './movie-preview.component';
 import { SharedModule } from '@movie-space/shared';
+import { MoviePreviewComponent } from './movie-preview.component';
+import { MoviePreviewResolverService } from './movie-preview-resolver.service';
 
 
 @NgModule({
@@ -16,7 +17,10 @@ import { SharedModule } from '@movie-space/shared';
       {
         path: ':id',
         pathMatch: 'full',
-        component: MoviePreviewComponent
+        component: MoviePreviewComponent,
+        resolve: {
+          data: MoviePreviewResolverService
+        }
       }
     ])
   ]

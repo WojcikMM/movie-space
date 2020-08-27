@@ -7,6 +7,7 @@ import {
   MovieInfoGridComponent
 } from './movie-card-back-side';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '@movie-space/shared';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   exports: [
     MovieCardComponent

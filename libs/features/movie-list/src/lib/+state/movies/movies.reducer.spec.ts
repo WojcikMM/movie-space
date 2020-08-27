@@ -1,14 +1,14 @@
 import * as MoviesActions from './movies.actions';
 import { initialState, reducer, State } from './movies.reducer';
 import { MovieType } from '@movie-space/shared';
-import { MoviesEntity } from '../../models';
+import { MovieEntity } from '../../models';
 import { Dictionary } from '@ngrx/entity';
 
 describe('Movies Reducer', () => {
 
   // LoadMovies API actions
 
-  let sampleDictionary: Dictionary<MoviesEntity>;
+  let sampleDictionary: Dictionary<MovieEntity>;
 
   beforeEach(() => {
     sampleDictionary = {
@@ -170,7 +170,7 @@ describe('Movies Reducer', () => {
 
     describe('WHEN valid action', () => {
       let result;
-      let givenResponseEntities: Dictionary<MoviesEntity>;
+      let givenResponseEntities: Dictionary<MovieEntity>;
       beforeEach(() => {
 
         givenResponseEntities = {
@@ -199,7 +199,7 @@ describe('Movies Reducer', () => {
         };
 
         const action = MoviesActions.loadNextPageSuccess(
-          { movies: Object.values<MoviesEntity>(givenResponseEntities) }
+          { movies: Object.values<MovieEntity>(givenResponseEntities) }
         );
 
         result = reducer({

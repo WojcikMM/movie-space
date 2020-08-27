@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieCardBackSideComponent } from './movie-card-back-side.component';
 import { Component, Input } from '@angular/core';
-import { MoviesEntity } from '../../models'
+import { MovieEntity } from '../../models'
 import { RouterTestingModule } from '@angular/router/testing';
 
 @Component({
@@ -10,7 +10,7 @@ import { RouterTestingModule } from '@angular/router/testing';
   selector: 'ms-list-movie-info-grid'
 })
 class MovieInfoGridStubComponent {
-  @Input() movie: MoviesEntity;
+  @Input() movie: MovieEntity;
 }
 
 

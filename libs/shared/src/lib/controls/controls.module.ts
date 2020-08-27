@@ -5,6 +5,7 @@ import { LoaderComponent } from './loader';
 import { HeaderComponent } from './header';
 import { NotFoundComponent } from './not-found';
 import { InfiniteScrollComponent } from './infinite-scroll';
+import { GenreListComponent } from './genre-list/genre-list.component';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { InfiniteScrollComponent } from './infinite-scroll';
     InfiniteScrollComponent,
     LoaderComponent,
     HeaderComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    GenreListComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { InfiniteScrollComponent } from './infinite-scroll';
     InfiniteScrollComponent,
     LoaderComponent,
     HeaderComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    GenreListComponent
   ]
 })
 export class ControlsModule {

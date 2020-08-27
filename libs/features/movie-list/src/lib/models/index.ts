@@ -1,1 +1,1 @@
-export * from './movies.entity';
+export * from './movie.entity';

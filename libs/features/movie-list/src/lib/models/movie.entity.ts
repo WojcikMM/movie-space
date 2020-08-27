@@ -1,7 +1,7 @@
 /**
  * Interface for the 'Movies' data
  */
-export interface MoviesEntity {
+export interface MovieEntity {
   id: number;
   title: string;
   overview: string;

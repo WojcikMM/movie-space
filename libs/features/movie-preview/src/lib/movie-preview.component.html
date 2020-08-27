@@ -14,9 +14,8 @@
 
     <label>Genres: </label>
     <div class="genres-buttons">
-      <button *ngFor="let genre of movieDetails.genres" routerLink="/{{genre.id}}">
-        {{genre.name}}
-      </button>
+      <shared-genre-list [genres]="movieDetails.genres">
+      </shared-genre-list>
     </div>
 
     <h2>Overview</h2>
@@ -29,7 +28,8 @@
   <div class="cast-container">
     <h2>Cast</h2>
     <div class="cast-person-container p-g">
-      <div *ngFor="let castPerson of castArray" class="cast-person ui-g-12 ui-md-6 ui-lg-4 ui-xl-3">
+      <div *ngFor="let castPerson of movieDetails?.credits?.cast | slice: 0: 12"
+           class="cast-person ui-g-12 ui-md-6 ui-lg-4 ui-xl-3">
         <ng-container *ngIf="!castPerson.profile_path; else castPersonImageTemplate">
           <img *ngIf="castPerson.gender === 1" src="assets/woman-placeholder-img.jpg" [alt]="castPerson.name"/>
           <img *ngIf="castPerson.gender !== 1" src="assets/man-placeholder-img.jpg" [alt]="castPerson.name"/>

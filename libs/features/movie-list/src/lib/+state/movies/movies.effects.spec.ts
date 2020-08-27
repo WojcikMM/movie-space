@@ -25,7 +25,7 @@ import {
   MoviesClientService,
   MovieType
 } from '@movie-space/shared';
-import { MoviesEntity } from '../../models';
+import { MovieEntity } from '../../models';
 
 describe('MoviesEffects', () => {
   let actions: Observable<any>;
@@ -33,7 +33,7 @@ describe('MoviesEffects', () => {
   let mockStore: MockStore;
   let moviesClientServiceSpy;
   let sampleMoviesDtoArray: MovieDto[];
-  let expectedMoviesEntityArray: MoviesEntity[];
+  let expectedMoviesEntityArray: MovieEntity[];
 
   beforeEach(() => {
     moviesClientServiceSpy = {

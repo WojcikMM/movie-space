@@ -2,7 +2,7 @@ import {
   Input,
   Component
 } from '@angular/core';
-import { MoviesEntity } from '../models';
+import { MovieEntity } from '../models';
 import { GenreEntity } from '@movie-space/shared';
 import { Observable } from 'rxjs';
 
@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 export class MovieCardComponent {
 
   @Input()
-  movie: MoviesEntity;
+  movie: MovieEntity;
 
   @Input()
   allGenres$: Observable<GenreEntity[]>;

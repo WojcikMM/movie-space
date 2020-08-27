@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { GenresFacade, MovieType, GenreEntity } from '@movie-space/shared';
 import { Observable } from 'rxjs';
 import { MoviesFacade } from './+state/movies/movies.facade';
-import { MoviesEntity } from './models';
+import { MovieEntity } from './models';
 
 @Component({
   selector: 'ms-list-movie-list',
@@ -11,7 +11,7 @@ import { MoviesEntity } from './models';
 })
 export class MovieListComponent {
 
-  loadedMovies$: Observable<MoviesEntity[]>;
+  loadedMovies$: Observable<MovieEntity[]>;
   selectedMovieType$: Observable<MovieType>;
   isLoading$: Observable<boolean>;
   allGenres$: Observable<GenreEntity[]>;

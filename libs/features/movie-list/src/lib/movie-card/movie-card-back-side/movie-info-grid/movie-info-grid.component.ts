@@ -2,7 +2,7 @@ import {
   Component,
   Input
 } from '@angular/core';
-import { MoviesEntity } from '../../../models';
+import { MovieEntity } from '../../../models';
 import { GenreEntity } from '@movie-space/shared';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -14,7 +14,7 @@ import { map } from 'rxjs/operators';
 })
 export class MovieInfoGridComponent {
 
-  @Input() movie: MoviesEntity;
+  @Input() movie: MovieEntity;
 
   @Input()
   set allGenres$(value$: Observable<GenreEntity[]>) {
