@@ -1,13 +1,13 @@
 <shared-header></shared-header>
-<div *ngIf="movieDetails !== undefined; else loader" class="movie-details-container">
+<div class="movie-details-container">
   <div class="main-info-grid">
     <h1>{{movieDetails.title}}</h1>
     <label>Release Date: </label>
     <span>{{movieDetails.release_date}}</span>
 
     <label>Average Score: </label>
-    <span *ngIf="movieDetails.vote_count !== 0; else notVotedLine">{{movieDetails.vote_average}}
-      ({{movieDetails.vote_count}})</span>
+    <span *ngIf="movieDetails.voteCount !== 0; else notVotedLine">{{movieDetails.voteAverage}}
+      ({{movieDetails.voteCount}})</span>
 
     <label>Runtime: </label>
     <span>{{movieDetails.runtime}} minutes</span>
@@ -21,8 +21,8 @@
     <h2>Overview</h2>
     <p>{{movieDetails.overview}}</p>
     <div class="movie-poster">
-      <img *ngIf="!movieDetails.poster_path" src="assets/poster-not-found.jpg" [alt]="movieDetails.title"/>
-      <img *ngIf="movieDetails.poster_path" [src]="posterPrefix + movieDetails.poster_path" [alt]="movieDetails.title"/>
+      <img *ngIf="!movieDetails.posterPath" src="assets/poster-not-found.jpg" [alt]="movieDetails.title"/>
+      <img *ngIf="movieDetails.posterPath" [src]="posterPrefix + movieDetails.posterPath" [alt]="movieDetails.title"/>
     </div>
   </div>
   <div class="cast-container">
@@ -30,14 +30,14 @@
     <div class="cast-person-container p-g">
       <div *ngFor="let castPerson of movieDetails?.credits?.cast | slice: 0: 12"
            class="cast-person ui-g-12 ui-md-6 ui-lg-4 ui-xl-3">
-        <ng-container *ngIf="!castPerson.profile_path; else castPersonImageTemplate">
+        <ng-container *ngIf="!castPerson.profilePath; else castPersonImageTemplate">
           <img *ngIf="castPerson.gender === 1" src="assets/woman-placeholder-img.jpg" [alt]="castPerson.name"/>
           <img *ngIf="castPerson.gender !== 1" src="assets/man-placeholder-img.jpg" [alt]="castPerson.name"/>
         </ng-container>
         <ng-template #castPersonImageTemplate>
-          <img [src]="posterPrefix + castPerson.profile_path" [alt]="castPerson.name"/>
+          <img [src]="posterPrefix + castPerson.profilePath" [alt]="castPerson.name"/>
         </ng-template>
-        <img *ngIf="!castPerson.profile_path" [src]="posterPrefix + castPerson.profile_path" [alt]="castPerson.name"/>
+        <img *ngIf="!castPerson.profilePath" [src]="posterPrefix + castPerson.profilePath" [alt]="castPerson.name"/>
         <h4>{{castPerson.name}}</h4>
       </div>
     </div>
@@ -45,10 +45,7 @@
 
 
 </div>
-<ng-template #loader>
-  <shared-loader></shared-loader>
-</ng-template>
 
 <ng-template #notVotedLine>
-  <span *ngIf="movieDetails.vote_count === 0">Movie not scored yet.</span>
+  <span *ngIf="movieDetails.voteCount === 0">Movie not scored yet.</span>
 </ng-template>

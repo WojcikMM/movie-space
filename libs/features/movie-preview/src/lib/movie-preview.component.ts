@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-import {
-  GLOBAL_CONST,
-  MovieDetailsDto
-} from '@movie-space/shared';
+import { GLOBAL_CONST } from '@movie-space/shared';
 import { ActivatedRoute } from '@angular/router';
 import { MOVIE_PREVIEW_CONST } from './movie-preview.const';
+import { MoviePreviewEntity } from './models';
 
 @Component({
   selector: 'ms-preview-movie-details',
@@ -12,7 +10,7 @@ import { MOVIE_PREVIEW_CONST } from './movie-preview.const';
   styleUrls: ['./movie-preview.component.scss']
 })
 export class MoviePreviewComponent {
-  movieDetails: MovieDetailsDto;
+  movieDetails: MoviePreviewEntity;
   posterPrefix: string = GLOBAL_CONST.MOVIE_DB.POSTER_URL_PREFIX;
 
   constructor(route: ActivatedRoute) {
