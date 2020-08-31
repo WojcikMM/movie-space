@@ -1,9 +1,4 @@
 export const GLOBAL_CONST = {
-  ROUTES: {
-    ROOT: '/',
-    LIST: 'list',
-    PREVIEW: 'details'
-  },
   MOVIE_DB: {
     URL: 'https://api.themoviedb.org/3',
     POSTER_URL_PREFIX: 'https://image.tmdb.org/t/p/w300/',

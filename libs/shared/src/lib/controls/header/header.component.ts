@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { GLOBAL_CONST } from '../../global.const';
 
 @Component({
   selector: 'shared-header',
@@ -7,5 +6,4 @@ import { GLOBAL_CONST } from '../../global.const';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  public readonly rootPathUrl: string = GLOBAL_CONST.ROUTES.ROOT;
 }

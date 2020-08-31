@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {
   SharedModule,
-  GLOBAL_CONST,
   NotFoundComponent,
 } from '@movie-space/shared';
 import { RouterModule } from '@angular/router';
@@ -24,15 +23,11 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     RouterModule.forRoot([
       {
         path: '',
-        redirectTo: GLOBAL_CONST.ROUTES.LIST,
-        pathMatch: 'full'
-      },
-      {
-        path: GLOBAL_CONST.ROUTES.LIST,
+        pathMatch: 'full',
         loadChildren: () => import('@movie-space/features/movie-list').then(module => module.MovieListModule)
       },
       {
-        path: GLOBAL_CONST.ROUTES.PREVIEW,
+        path: 'details',
         loadChildren: () => import('@movie-space/features/movie-preview').then(module => module.MoviePreviewModule)
       },
       { path: '**', component: NotFoundComponent }

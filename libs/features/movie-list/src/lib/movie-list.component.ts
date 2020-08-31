@@ -18,12 +18,13 @@ export class MovieListComponent {
 
 
   constructor(private readonly _moviesFacade: MoviesFacade,
-              private readonly _genresFacade: GenresFacade) {
+              genresFacade: GenresFacade) {
     this.loadedMovies$ = _moviesFacade.allMovies$;
     this.selectedMovieType$ = _moviesFacade.selectedMovieType$;
     this.isLoading$ = _moviesFacade.areMoviesLoading$;
-    this.allGenres$ = _genresFacade.allGenres$;
-    _moviesFacade.setMovieType();
+    this.allGenres$ = genresFacade.allGenres$;
+    _moviesFacade.setMovieType()
+    genresFacade.loadGenres();
   }
 
   setMovieType(movieType: MovieType) {
