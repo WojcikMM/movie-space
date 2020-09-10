@@ -1,3 +1,4 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/wojcikmm/movie-space/badge)](https://www.codefactor.io/repository/github/wojcikmm/movie-space)
 # Family Movies Application
 
 Application to help be on time with the newest movies releases. 
