@@ -1,7 +1,8 @@
 @import 'libs/theme/src/index';
 @import '../../styles/mixins';
 
-.movie-card-back-side {
+:host {
+  display:block;
   @include movie-card-side-mixin;
   background-color: $theme-color--sea-blue;
   content: attr(data-value);
@@ -10,7 +11,9 @@
   text-align: center;
   transform: rotateY(180deg) translateZ(1px);
   vertical-align: middle;
+}
 
+.movie-card-back-side {
   &__header {
     font-size: larger;
     font-weight: bold;
